@@ -74,7 +74,7 @@ remote func register_player(data):
     # Store the info
     Game.allPlayerData[id] = data
     # $Code.text = code
-    print("player registered", data, "\nMy ID: ", id, "\nHis ID: ", get_tree().get_rpc_sender_id())
+    print("player registered", data, "\nMy ID: ", get_tree().get_network_unique_id(), "\nHis ID: ", get_tree().get_rpc_sender_id())
 
     updatePlayerList()
 

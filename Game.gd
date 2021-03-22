@@ -113,5 +113,5 @@ func startClient(ip=myIP):
     mode = CLIENT
     status = "ignored"
     clientCode = ip
-    allPlayerData[0] = player.getNetworkingData()
+    allPlayerData[get_tree().get_network_unique_id()] = player.getNetworkingData()
     # $Code.text = code
