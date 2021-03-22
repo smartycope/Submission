@@ -89,7 +89,12 @@ func startGame():
     rpc("pre_configure_game")
 
 
-remote func pre_configure_game():
+remote func
+
+
+
+remotesync func pre_configure_game():
+    assert(get_tree().get_network_unique_id() == 1)
     get_tree().set_pause(true) # Pre-pause
     # The rest is the same as in the code in the previous section (look above)
     # var selfPeerID = get_tree().get_network_unique_id()
@@ -104,14 +109,14 @@ remote func pre_configure_game():
     if get_tree().is_network_server():
         rset("Cope.useableShips", Cope.useableShips)
         rpc("Cope.player.init", Cope.useableShips)
+        Game.playerTurnOrder = Game.allPlayerData.keys()
+        rset("Game.playerTurnOrder", Game.playerTurnOrder)
 
     # Cope.gotoScene("SpaceStationMenu")
 
     # Load my player
     var myID = get_tree().get_network_unique_id()
     Game.player.id = myID
-
-    Game.playerTurnOrder = Game.allPlayerData.keys()
 
 
     # var my_player = preload("res://player.tscn").instance()
