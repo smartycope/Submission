@@ -1,0 +1,76 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=4
+
+_global_script_classes=[ {
+"base": "HBoxContainer",
+"class": "ContributorClass",
+"language": "GDScript",
+"path": "res://addons/github-integration/scripts/ContributorClass.gd"
+}, {
+"base": "PanelContainer",
+"class": "GistItem",
+"language": "GDScript",
+"path": "res://addons/github-integration/scripts/GistItem.gd"
+}, {
+"base": "HBoxContainer",
+"class": "InvitationItem",
+"language": "GDScript",
+"path": "res://addons/github-integration/scripts/InvitationItem.gd"
+}, {
+"base": "Object",
+"class": "Player",
+"language": "GDScript",
+"path": "res://Player.gd"
+}, {
+"base": "PanelContainer",
+"class": "RepositoryItem",
+"language": "GDScript",
+"path": "res://addons/github-integration/scripts/RepositoryItem.gd"
+}, {
+"base": "Object",
+"class": "Ship",
+"language": "GDScript",
+"path": "res://Ship.gd"
+}, {
+"base": "TextureButton",
+"class": "SimpleTextureButton",
+"language": "GDScript",
+"path": "res://SpaceStation.gd"
+}, {
+"base": "Control",
+"class": "Spacer",
+"language": "GDScript",
+"path": "res://Spacer.gd"
+} ]
+_global_script_class_icons={
+"ContributorClass": "",
+"GistItem": "",
+"InvitationItem": "",
+"Player": "",
+"RepositoryItem": "",
+"Ship": "",
+"SimpleTextureButton": "",
+"Spacer": ""
+}
+
+[application]
+
+config/name="Submission"
+run/main_scene="res://space.tscn"
+config/icon="res://icon.png"
+
+[autoload]
+
+Cope="*res://Cope.gd"
+Game="*res://Game.gd"
+
+[rendering]
+
+environment/default_environment="res://default_env.tres"

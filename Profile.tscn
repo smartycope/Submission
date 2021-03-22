@@ -1,0 +1,123 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://SpaceFont-Regular.tres" type="DynamicFont" id=1]
+[ext_resource path="res://suitBackground.jpeg" type="Texture" id=2]
+[ext_resource path="res://Profile.gd" type="Script" id=3]
+[ext_resource path="res://FileDialog.gd" type="Script" id=4]
+[ext_resource path="res://EdgeOfTheGalaxyRegular-OVEa6.otf" type="DynamicFontData" id=5]
+[ext_resource path="res://SceneButton.gd" type="Script" id=6]
+
+[sub_resource type="Theme" id=1]
+default_font = ExtResource( 1 )
+Fonts/fonts/SpaceFont = null
+
+[sub_resource type="DynamicFont" id=2]
+size = 24
+font_data = ExtResource( 5 )
+
+[node name="Control" type="TextureRect"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 0.0118732
+margin_top = 0.0537544
+margin_right = 896.012
+margin_bottom = 480.054
+rect_scale = Vector2( 0.533333, 0.555532 )
+texture = ExtResource( 2 )
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Name" type="LineEdit" parent="."]
+margin_left = 295.0
+margin_top = 142.0
+margin_right = 851.0
+margin_bottom = 211.0
+custom_fonts/font = ExtResource( 1 )
+text = "Player Name:  "
+placeholder_text = "Prunella"
+caret_blink = true
+
+[node name="Port" type="SpinBox" parent="."]
+margin_left = 309.192
+margin_top = 519.828
+margin_right = 556.192
+margin_bottom = 584.828
+rect_scale = Vector2( 1.64707, 1.93813 )
+theme = SubResource( 1 )
+max_value = 999999.0
+page = 100.0
+value = 6667.0
+rounded = true
+allow_greater = true
+allow_lesser = true
+prefix = "Server Port: "
+
+[node name="Icon" type="MenuButton" parent="."]
+margin_left = 299.103
+margin_top = 262.147
+margin_right = 690.103
+margin_bottom = 440.147
+size_flags_horizontal = 0
+size_flags_vertical = 0
+custom_fonts/font = ExtResource( 1 )
+text = "Player Icon: "
+flat = false
+align = 0
+expand_icon = true
+
+[node name="FileDialog" type="FileDialog" parent="."]
+visible = true
+margin_left = 2221.47
+margin_top = 179.964
+margin_right = 2765.47
+margin_bottom = 589.964
+popup_exclusive = true
+window_title = "Select an Icon"
+resizable = true
+dialog_hide_on_ok = true
+mode = 0
+access = 2
+filters = PoolStringArray( ".png", ".jpg", ".jpeg", ".bmp" )
+current_dir = "/home/marvin/hello/Godot/Submission"
+current_path = "/home/marvin/hello/Godot/Submission/"
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="."]
+margin_left = 338.156
+margin_top = 658.249
+margin_right = 538.156
+margin_bottom = 694.249
+custom_fonts/font = SubResource( 2 )
+text = "(Requires restart)"
+
+[node name="Label2" type="Label" parent="."]
+margin_left = 306.635
+margin_top = 446.988
+margin_right = 687.635
+margin_bottom = 505.988
+custom_fonts/font = SubResource( 2 )
+text = "(This doesn't do anything at the moment)"
+
+[node name="Button" type="Button" parent="."]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -88.6979
+margin_top = -127.83
+margin_right = 93.3021
+margin_bottom = -50.8304
+custom_fonts/font = ExtResource( 1 )
+text = "Go Back"
+script = ExtResource( 6 )
+scene = "space"
+[connection signal="text_entered" from="Name" to="." method="setName"]
+[connection signal="value_changed" from="Port" to="." method="setPort"]
+[connection signal="pressed" from="Icon" to="FileDialog" method="popup_centered"]
+[connection signal="file_selected" from="FileDialog" to="." method="setIcon"]

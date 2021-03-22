@@ -1,0 +1,22 @@
+[gd_scene format=2]
+
+[node name="Control" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="."]
+margin_left = 231.0
+margin_top = 115.0
+margin_right = 493.0
+margin_bottom = 204.0
+text = "List of players who want in"
+
+[node name="Label2" type="Label" parent="."]
+margin_left = 454.939
+margin_top = 34.5218
+margin_right = 716.939
+margin_bottom = 123.522
+text = "To join, have the players enter this code"

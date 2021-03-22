@@ -1,0 +1,312 @@
+[gd_scene load_steps=27 format=2]
+
+[ext_resource path="res://spaceStation.png" type="Texture" id=1]
+[ext_resource path="res://Jupter.gd" type="Script" id=2]
+[ext_resource path="res://asteroid8.png" type="Texture" id=3]
+[ext_resource path="res://asteroid2.png" type="Texture" id=4]
+[ext_resource path="res://asteroid1.png" type="Texture" id=5]
+[ext_resource path="res://asteroid6.png" type="Texture" id=6]
+[ext_resource path="res://asteroid5.png" type="Texture" id=7]
+[ext_resource path="res://asteroid7.png" type="Texture" id=8]
+[ext_resource path="res://asteroid4.png" type="Texture" id=9]
+[ext_resource path="res://asteroid10.png" type="Texture" id=10]
+[ext_resource path="res://asteroid3.png" type="Texture" id=11]
+[ext_resource path="res://asteroid12.png" type="Texture" id=12]
+[ext_resource path="res://asteroid9.png" type="Texture" id=13]
+[ext_resource path="res://asteroid11.png" type="Texture" id=14]
+[ext_resource path="res://jupiterTexture.png" type="Texture" id=15]
+[ext_resource path="res://space.gd" type="Script" id=16]
+[ext_resource path="res://SpaceFont.tres" type="DynamicFont" id=17]
+[ext_resource path="res://EdgeOfTheGalaxyRegular-OVEa6.otf" type="DynamicFontData" id=18]
+[ext_resource path="res://SpaceFont-Regular.tres" type="DynamicFont" id=19]
+[ext_resource path="res://PopupDialog.gd" type="Script" id=20]
+
+[sub_resource type="SpatialMaterial" id=1]
+albedo_color = Color( 0, 0, 0, 1 )
+
+[sub_resource type="CameraTexture" id=2]
+
+[sub_resource type="ViewportTexture" id=3]
+viewport_path = NodePath("Jupiter/JupiterTextureViewport")
+
+[sub_resource type="SpatialMaterial" id=4]
+resource_local_to_scene = true
+albedo_texture = SubResource( 3 )
+
+[sub_resource type="SphereMesh" id=5]
+radius = 4.0
+height = 8.0
+radial_segments = 1024
+rings = 64
+
+[sub_resource type="DynamicFont" id=6]
+size = 18
+font_data = ExtResource( 18 )
+
+[node name="Game" type="Node2D"]
+script = ExtResource( 16 )
+
+[node name="Jupiter" type="Node2D" parent="."]
+
+[node name="Camera" type="Camera" parent="Jupiter"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5.34589, 2.32723, 5.23302 )
+projection = 1
+size = 8.0
+
+[node name="Background" type="CSGBox" parent="Jupiter"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -14 )
+width = 32.0
+height = 32.0
+depth = 0.002
+material = SubResource( 1 )
+
+[node name="JupterOutput" type="Sprite" parent="Jupiter"]
+texture = SubResource( 2 )
+
+[node name="Sun" type="DirectionalLight" parent="Jupiter"]
+transform = Transform( 0.590388, -0.55035, 0.590388, 0.189667, 0.805592, 0.561292, -0.784518, -0.219403, 0.579995, 21.1522, 12.8478, 19.9971 )
+light_color = Color( 1, 0.933333, 0.623529, 1 )
+light_energy = 0.3
+
+[node name="JupterMesh" type="MeshInstance" parent="Jupiter"]
+transform = Transform( 0.978148, -0.207912, 0, 0.207912, 0.978148, 0, 0, 0, 1, 0, 0, 0 )
+material_override = SubResource( 4 )
+mesh = SubResource( 5 )
+material/0 = null
+script = ExtResource( 2 )
+rotationStep = 0.001
+rotateClockwise = false
+
+[node name="AnimationTimer" type="Timer" parent="Jupiter/JupterMesh"]
+wait_time = 0.016
+autostart = true
+
+[node name="JupiterTextureViewport" type="Viewport" parent="Jupiter"]
+size = Vector2( 2048, 1024 )
+hdr = false
+disable_3d = true
+usage = 0
+
+[node name="JupiterTexture" type="Sprite" parent="Jupiter/JupiterTextureViewport"]
+texture = ExtResource( 15 )
+centered = false
+region_rect = Rect2( 0, 0, 4091.74, 2041.2 )
+
+[node name="SpaceStation" type="TextureButton" parent="."]
+visible = false
+margin_left = 1262.97
+margin_top = 488.403
+margin_right = 2097.97
+margin_bottom = 987.403
+rect_rotation = -133.695
+rect_scale = Vector2( 0.261076, 0.261076 )
+button_mask = 0
+texture_normal = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="StartAI" type="Button" parent="."]
+margin_left = 520.0
+margin_top = 377.0
+margin_right = 1367.0
+margin_bottom = 882.0
+rect_rotation = -128.274
+rect_scale = Vector2( 0.265174, 0.265174 )
+icon = ExtResource( 1 )
+flat = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="StartAI2" type="Button" parent="."]
+margin_left = 379.075
+margin_top = 129.126
+margin_right = 609.075
+margin_bottom = 179.126
+custom_fonts/font = SubResource( 6 )
+text = "Click to start a game with  an  AI"
+flat = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="WelcomeLabel" type="Label" parent="."]
+margin_left = 57.9423
+margin_top = 49.0537
+margin_right = 187.942
+margin_bottom = 79.0537
+custom_fonts/font = ExtResource( 19 )
+text = "Welcome to"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="WelcomeLabel2" type="Label" parent="WelcomeLabel"]
+margin_left = 134.13
+margin_top = -5.83176
+margin_right = 271.13
+margin_bottom = 31.1682
+custom_fonts/font = ExtResource( 17 )
+text = "Submission!"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="StartOnline" type="Button" parent="."]
+margin_left = 656.924
+margin_top = 31.2459
+margin_right = 940.924
+margin_bottom = 221.246
+custom_fonts/font = SubResource( 6 )
+text = "Click to  start an online game"
+flat = true
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="11" type="Sprite" parent="StartOnline"]
+show_behind_parent = true
+position = Vector2( 41.536, 27.2936 )
+texture = ExtResource( 14 )
+
+[node name="7" type="Sprite" parent="StartOnline"]
+show_behind_parent = true
+position = Vector2( 19.4597, 102.981 )
+texture = ExtResource( 8 )
+
+[node name="6" type="Sprite" parent="StartOnline"]
+show_behind_parent = true
+position = Vector2( 147.654, 171.208 )
+texture = ExtResource( 6 )
+
+[node name="4" type="Sprite" parent="StartOnline"]
+show_behind_parent = true
+position = Vector2( 107.514, 82.6066 )
+texture = ExtResource( 9 )
+
+[node name="2" type="Sprite" parent="StartOnline"]
+show_behind_parent = true
+position = Vector2( 222.311, 59.0291 )
+texture = ExtResource( 4 )
+
+[node name="1" type="Sprite" parent="StartOnline"]
+show_behind_parent = true
+position = Vector2( 238.247, 137.598 )
+scale = Vector2( 0.633844, 0.633844 )
+texture = ExtResource( 5 )
+
+[node name="JoinOnline" type="MenuButton" parent="."]
+margin_left = 810.511
+margin_top = 274.895
+margin_right = 1000.51
+margin_bottom = 468.895
+custom_fonts/font = SubResource( 6 )
+text = "Click to  join an online game"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PopupDialog" type="PopupDialog" parent="JoinOnline"]
+visible = true
+margin_left = 342.814
+margin_top = -59.8564
+margin_right = 571.814
+margin_bottom = 62.1436
+script = ExtResource( 20 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="JoinOnline/PopupDialog"]
+anchor_right = 1.0
+margin_top = 12.3805
+margin_bottom = 42.3805
+custom_fonts/font = ExtResource( 19 )
+text = "Enter Game Code"
+align = 1
+valign = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="OnlineCode" type="LineEdit" parent="JoinOnline/PopupDialog"]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 22.6195
+margin_top = -55.0
+margin_right = -18.3805
+margin_bottom = -15.0
+custom_fonts/font = ExtResource( 19 )
+clear_button_enabled = true
+caret_blink = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="12" type="Sprite" parent="JoinOnline"]
+show_behind_parent = true
+position = Vector2( 97.4595, 43.7425 )
+texture = ExtResource( 12 )
+
+[node name="9" type="Sprite" parent="JoinOnline"]
+show_behind_parent = true
+position = Vector2( 158.257, 99.673 )
+texture = ExtResource( 13 )
+
+[node name="3" type="Sprite" parent="JoinOnline"]
+show_behind_parent = true
+position = Vector2( 29.5686, 110.667 )
+texture = ExtResource( 11 )
+
+[node name="5" type="Sprite" parent="JoinOnline"]
+show_behind_parent = true
+position = Vector2( 102.859, 172.619 )
+texture = ExtResource( 7 )
+
+[node name="Rules" type="Button" parent="."]
+margin_left = 684.542
+margin_top = 253.412
+margin_right = 743.542
+margin_bottom = 306.412
+custom_fonts/font = SubResource( 6 )
+text = "Rules"
+flat = true
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="8" type="Sprite" parent="Rules"]
+show_behind_parent = true
+position = Vector2( 29, 26 )
+texture = ExtResource( 3 )
+
+[node name="Profile" type="Button" parent="."]
+margin_left = 755.855
+margin_top = 501.668
+margin_right = 812.855
+margin_bottom = 544.668
+custom_fonts/font = SubResource( 6 )
+text = "Profile"
+flat = true
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="10" type="Sprite" parent="Profile"]
+show_behind_parent = true
+position = Vector2( 25.723, 20.1908 )
+texture = ExtResource( 10 )
+[connection signal="timeout" from="Jupiter/JupterMesh/AnimationTimer" to="Jupiter/JupterMesh" method="rotateStep"]
+[connection signal="pressed" from="SpaceStation" to="." method="spaceStationPressed"]
+[connection signal="pressed" from="StartAI" to="." method="spaceStationPressed"]
+[connection signal="pressed" from="StartAI2" to="." method="spaceStationPressed"]
+[connection signal="pressed" from="StartOnline" to="." method="startOnlineGame"]
+[connection signal="pressed" from="JoinOnline" to="JoinOnline/PopupDialog" method="popup_centered"]
+[connection signal="text_entered" from="JoinOnline/PopupDialog/OnlineCode" to="." method="onlineCodeEntered"]
+[connection signal="pressed" from="Rules" to="." method="_on_Rules_pressed"]
+[connection signal="pressed" from="Profile" to="." method="_on_Profile_pressed"]

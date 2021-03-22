@@ -1,0 +1,63 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://EdgeOfTheGalaxyRegular-OVEa6.otf" type="DynamicFontData" id=1]
+[ext_resource path="res://SpaceFont-Poster.tres" type="DynamicFont" id=2]
+[ext_resource path="res://SpaceFont-Regular.tres" type="DynamicFont" id=3]
+[ext_resource path="res://Rules.gd" type="Script" id=4]
+
+[sub_resource type="DynamicFont" id=1]
+size = 18
+extra_spacing_top = 3
+extra_spacing_bottom = 2
+extra_spacing_space = 2
+font_data = ExtResource( 1 )
+
+[node name="Control" type="Panel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="."]
+anchor_right = 1.0
+margin_left = 2.3327
+margin_top = 1.16634
+margin_right = 2.33276
+margin_bottom = 39.1663
+custom_fonts/font = ExtResource( 2 )
+text = "Welcome to SUBMISSION"
+align = 1
+
+[node name="Label2" type="Label" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 59.0
+margin_right = -3.0
+margin_bottom = -68.0
+custom_fonts/font = SubResource( 1 )
+text = "You are manager of a space station orbiting Jupiter, and in charge of defending your home planet and at the same time conquering other planets. You have some built in resources like solar panels, a manufactory, and some ships that you start off with, but most of your resources are going to come from ships that you build to mine asteroids, generate power, and manufacture more ships. Keep in mind that you only have 5 docking ports on your station however, and can only dock 5 ships at a time. Some ships, however have extra docking ports on them, that you can daisy chain more ships onto. 
+When you send your ships out, you don't get them back until you run out of the current ships in your queue, so be wary to not stock up on too many ships that only defend or only attack, otherwise you wont get anything done! 
+At the same time, your competitors might attack at any moment, so you want to be prepared...
+I suck at writing, even descriptions of my own game, so for now, this works until I come back to it.
+
+This game was inspired by the card game dominion, and has a vaugely similar gameplay."
+align = 1
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button" type="Button" parent="."]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -73.0
+margin_top = -56.0
+margin_right = 73.0
+custom_fonts/font = ExtResource( 3 )
+text = "Go Back"
+[connection signal="pressed" from="Button" to="." method="goBack"]

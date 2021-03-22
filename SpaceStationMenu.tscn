@@ -1,0 +1,361 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://SpaceFont.tres" type="DynamicFont" id=1]
+[ext_resource path="res://EnergyIcon.png" type="Texture" id=2]
+[ext_resource path="res://robot icon blue.png" type="Texture" id=3]
+[ext_resource path="res://creditsIcon.png" type="Texture" id=4]
+[ext_resource path="res://SpaceStationMenu.gd" type="Script" id=5]
+[ext_resource path="res://attackIcon-edited.png" type="Texture" id=6]
+[ext_resource path="res://defenseIcon-edited.png" type="Texture" id=7]
+[ext_resource path="res://EdgeOfTheGalaxyItalic-ZVJB3.otf" type="DynamicFontData" id=8]
+
+[sub_resource type="Theme" id=1]
+
+[sub_resource type="DynamicFont" id=2]
+size = 20
+outline_color = Color( 0.752941, 0.878431, 1, 1 )
+extra_spacing_top = 7
+extra_spacing_char = 1
+font_data = ExtResource( 8 )
+
+[node name="SpaceStationMenu" type="Panel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+emptyPortText = "This port is empty."
+
+[node name="Resources" type="VBoxContainer" parent="."]
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -298.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ResourcesLabel" type="Label" parent="Resources"]
+margin_right = 298.0
+margin_bottom = 37.0
+theme = SubResource( 1 )
+custom_fonts/font = ExtResource( 1 )
+text = "Available Resources"
+align = 1
+valign = 2
+autowrap = true
+
+[node name="ResourcesAndInfo" type="VSplitContainer" parent="Resources"]
+margin_top = 41.0
+margin_right = 298.0
+margin_bottom = 332.0
+split_offset = 20
+dragger_visibility = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ResourcesGrid" type="GridContainer" parent="Resources/ResourcesAndInfo"]
+margin_right = 298.0
+margin_bottom = 201.0
+columns = 3
+
+[node name="EnergyIcon" type="TextureRect" parent="Resources/ResourcesAndInfo/ResourcesGrid"]
+margin_right = 35.0
+margin_bottom = 37.0
+rect_min_size = Vector2( 35, 35 )
+texture = ExtResource( 2 )
+expand = true
+stretch_mode = 5
+
+[node name="EnergyLabel" type="Label" parent="Resources/ResourcesAndInfo/ResourcesGrid"]
+margin_left = 39.0
+margin_right = 241.0
+margin_bottom = 37.0
+custom_fonts/font = ExtResource( 1 )
+text = "Energy:"
+
+[node name="Energy" type="Label" parent="Resources/ResourcesAndInfo/ResourcesGrid"]
+margin_left = 245.0
+margin_right = 258.0
+margin_bottom = 37.0
+custom_fonts/font = ExtResource( 1 )
+text = "0"
+
+[node name="ManuIcon" type="TextureRect" parent="Resources/ResourcesAndInfo/ResourcesGrid"]
+margin_top = 41.0
+margin_right = 35.0
+margin_bottom = 78.0
+rect_min_size = Vector2( 35, 35 )
+texture = ExtResource( 3 )
+expand = true
+stretch_mode = 5
+
+[node name="ManuLabel" type="Label" parent="Resources/ResourcesAndInfo/ResourcesGrid"]
+margin_left = 39.0
+margin_top = 41.0
+margin_right = 241.0
+margin_bottom = 78.0
+custom_fonts/font = ExtResource( 1 )
+text = "ManuFactories:   "
+
+[node name="ManuFactories" type="Label" parent="Resources/ResourcesAndInfo/ResourcesGrid"]
+margin_left = 245.0
+margin_top = 41.0
+margin_right = 258.0
+margin_bottom = 78.0
+custom_fonts/font = ExtResource( 1 )
+text = "0"
+
+[node name="CreditsIcon" type="TextureRect" parent="Resources/ResourcesAndInfo/ResourcesGrid"]
+margin_top = 82.0
+margin_right = 35.0
+margin_bottom = 119.0
+rect_min_size = Vector2( 35, 35 )
+texture = ExtResource( 4 )
+expand = true
+stretch_mode = 5
+
+[node name="CreditsLabel" type="Label" parent="Resources/ResourcesAndInfo/ResourcesGrid"]
+margin_left = 39.0
+margin_top = 82.0
+margin_right = 241.0
+margin_bottom = 119.0
+custom_fonts/font = ExtResource( 1 )
+text = "Credits:"
+
+[node name="Credits" type="Label" parent="Resources/ResourcesAndInfo/ResourcesGrid"]
+margin_left = 245.0
+margin_top = 82.0
+margin_right = 258.0
+margin_bottom = 119.0
+custom_fonts/font = ExtResource( 1 )
+text = "0"
+
+[node name="AttackIcon" type="TextureRect" parent="Resources/ResourcesAndInfo/ResourcesGrid"]
+margin_top = 123.0
+margin_right = 35.0
+margin_bottom = 160.0
+rect_min_size = Vector2( 35, 35 )
+texture = ExtResource( 6 )
+expand = true
+stretch_mode = 5
+
+[node name="AttackLabel" type="Label" parent="Resources/ResourcesAndInfo/ResourcesGrid"]
+margin_left = 39.0
+margin_top = 123.0
+margin_right = 241.0
+margin_bottom = 160.0
+custom_fonts/font = ExtResource( 1 )
+text = "Attack:"
+
+[node name="Attack" type="Label" parent="Resources/ResourcesAndInfo/ResourcesGrid"]
+margin_left = 245.0
+margin_top = 123.0
+margin_right = 258.0
+margin_bottom = 160.0
+custom_fonts/font = ExtResource( 1 )
+text = "0"
+
+[node name="DefenseIcon" type="TextureRect" parent="Resources/ResourcesAndInfo/ResourcesGrid"]
+margin_top = 164.0
+margin_right = 35.0
+margin_bottom = 201.0
+rect_min_size = Vector2( 35, 35 )
+texture = ExtResource( 7 )
+expand = true
+stretch_mode = 5
+
+[node name="DefenseLabel" type="Label" parent="Resources/ResourcesAndInfo/ResourcesGrid"]
+margin_left = 39.0
+margin_top = 164.0
+margin_right = 241.0
+margin_bottom = 201.0
+custom_fonts/font = ExtResource( 1 )
+text = "Defense:"
+
+[node name="Defense" type="Label" parent="Resources/ResourcesAndInfo/ResourcesGrid"]
+margin_left = 245.0
+margin_top = 164.0
+margin_right = 258.0
+margin_bottom = 201.0
+custom_fonts/font = ExtResource( 1 )
+text = "0"
+
+[node name="InfoGrid" type="GridContainer" parent="Resources/ResourcesAndInfo"]
+margin_top = 213.0
+margin_right = 298.0
+margin_bottom = 291.0
+columns = 2
+
+[node name="TotalShipsLabel" type="Label" parent="Resources/ResourcesAndInfo/InfoGrid"]
+margin_right = 238.0
+margin_bottom = 37.0
+custom_fonts/font = ExtResource( 1 )
+text = "Total Ships:                 "
+
+[node name="TotalShips" type="Label" parent="Resources/ResourcesAndInfo/InfoGrid"]
+margin_left = 242.0
+margin_right = 255.0
+margin_bottom = 37.0
+custom_fonts/font = ExtResource( 1 )
+text = "0"
+
+[node name="TurnLabel" type="Label" parent="Resources/ResourcesAndInfo/InfoGrid"]
+margin_top = 41.0
+margin_right = 238.0
+margin_bottom = 78.0
+custom_fonts/font = ExtResource( 1 )
+text = "Turn:"
+
+[node name="Turn" type="Label" parent="Resources/ResourcesAndInfo/InfoGrid"]
+margin_left = 242.0
+margin_top = 41.0
+margin_right = 255.0
+margin_bottom = 78.0
+custom_fonts/font = ExtResource( 1 )
+text = "0"
+
+[node name="Ships" type="ScrollContainer" parent="."]
+anchor_right = 0.702
+anchor_bottom = 1.0
+margin_right = 0.151978
+margin_bottom = -1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ShipContainer" type="VBoxContainer" parent="Ships"]
+margin_right = 512.0
+margin_bottom = 50.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ShipsLabel" type="Label" parent="Ships/ShipContainer"]
+margin_right = 512.0
+margin_bottom = 37.0
+custom_fonts/font = ExtResource( 1 )
+text = "Docked Ships"
+align = 1
+valign = 2
+
+[node name="ShipsGrid" type="HSplitContainer" parent="Ships/ShipContainer"]
+margin_top = 41.0
+margin_right = 512.0
+margin_bottom = 50.0
+split_offset = 40
+dragger_visibility = 1
+
+[node name="DockingPortList" type="ItemList" parent="Ships/ShipContainer/ShipsGrid"]
+margin_bottom = 9.0
+custom_fonts/font = ExtResource( 1 )
+
+[node name="ShipList" type="ItemList" parent="Ships/ShipContainer/ShipsGrid"]
+margin_left = 12.0
+margin_right = 512.0
+margin_bottom = 9.0
+rect_min_size = Vector2( 500, 0 )
+custom_fonts/font = ExtResource( 1 )
+auto_height = true
+fixed_icon_size = Vector2( 35, 35 )
+
+[node name="-DockingPortList" type="VBoxContainer" parent="Ships/ShipContainer/ShipsGrid"]
+visible = false
+margin_right = 175.0
+margin_bottom = 201.0
+
+[node name="Label1" type="Label" parent="Ships/ShipContainer/ShipsGrid/-DockingPortList"]
+margin_right = 175.0
+margin_bottom = 37.0
+custom_fonts/font = ExtResource( 1 )
+text = "Docking Port 1:"
+
+[node name="Label2" type="Label" parent="Ships/ShipContainer/ShipsGrid/-DockingPortList"]
+margin_top = 41.0
+margin_right = 175.0
+margin_bottom = 78.0
+custom_fonts/font = ExtResource( 1 )
+text = "Docking Port 2:"
+
+[node name="Label3" type="Label" parent="Ships/ShipContainer/ShipsGrid/-DockingPortList"]
+margin_top = 82.0
+margin_right = 175.0
+margin_bottom = 119.0
+custom_fonts/font = ExtResource( 1 )
+text = "Docking Port 3:"
+
+[node name="Label4" type="Label" parent="Ships/ShipContainer/ShipsGrid/-DockingPortList"]
+margin_top = 123.0
+margin_right = 175.0
+margin_bottom = 160.0
+custom_fonts/font = ExtResource( 1 )
+text = "Docking Port 4:"
+
+[node name="Label5" type="Label" parent="Ships/ShipContainer/ShipsGrid/-DockingPortList"]
+margin_top = 164.0
+margin_right = 175.0
+margin_bottom = 201.0
+custom_fonts/font = ExtResource( 1 )
+text = "Docking Port 5:"
+
+[node name="Buttons" type="VBoxContainer" parent="."]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -307.963
+margin_top = -190.469
+margin_right = -118.963
+margin_bottom = -53.4687
+rect_scale = Vector2( 1.60281, 1.34835 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BuyShips" type="Button" parent="Buttons"]
+margin_right = 189.0
+margin_bottom = 43.0
+custom_fonts/font = ExtResource( 1 )
+text = "Purchase Ships"
+
+[node name="GoToBridge" type="Button" parent="Buttons"]
+margin_top = 47.0
+margin_right = 189.0
+margin_bottom = 90.0
+custom_fonts/font = ExtResource( 1 )
+text = "Go To Bridge"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="EndTurn" type="Button" parent="Buttons"]
+margin_top = 94.0
+margin_right = 189.0
+margin_bottom = 137.0
+custom_fonts/font = ExtResource( 1 )
+text = "End Turn"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Toast" type="Label" parent="."]
+anchor_right = 1.0
+margin_left = 716.832
+margin_top = 364.137
+margin_right = -7.16821
+margin_bottom = 401.137
+grow_horizontal = 0
+grow_vertical = 0
+custom_fonts/font = SubResource( 2 )
+align = 2
+valign = 1
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="item_activated" from="Ships/ShipContainer/ShipsGrid/ShipList" to="." method="shipUsed"]
+[connection signal="pressed" from="Buttons/BuyShips" to="." method="buyShips"]
+[connection signal="pressed" from="Buttons/GoToBridge" to="." method="_on_GoToBridge_pressed"]
+[connection signal="pressed" from="Buttons/EndTurn" to="." method="endTurn"]

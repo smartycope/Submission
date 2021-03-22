@@ -1,0 +1,69 @@
+[gd_scene format=2]
+
+[node name="Control" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="."]
+margin_left = 173.0
+margin_top = 182.0
+margin_right = 423.0
+margin_bottom = 310.0
+text = "Local (AI)
+"
+
+[node name="Label2" type="Label" parent="."]
+margin_left = 657.036
+margin_top = 130.681
+margin_right = 907.036
+margin_bottom = 258.681
+text = "Start an online game
+"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label6" type="Label" parent="."]
+margin_left = 673.365
+margin_top = 159.839
+margin_right = 923.365
+margin_bottom = 287.839
+text = "Goes to Start server scene ->
+"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label3" type="Label" parent="."]
+margin_left = 659.369
+margin_top = 320.796
+margin_right = 909.369
+margin_bottom = 448.796
+text = "Join an online game
+"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label4" type="Label" parent="."]
+margin_left = 694.359
+margin_top = 349.955
+margin_right = 944.359
+margin_bottom = 477.955
+text = "Enter a code/ip/something"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label5" type="Label" parent="."]
+margin_left = 742.179
+margin_top = 375.614
+margin_right = 992.179
+margin_bottom = 503.614
+text = "Goes to lobby ->"
+__meta__ = {
+"_edit_use_anchors_": false
+}

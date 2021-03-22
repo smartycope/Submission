@@ -1,0 +1,296 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://commandBridge.jpeg" type="Texture" id=1]
+[ext_resource path="res://CommandFeuge.gd" type="Script" id=2]
+[ext_resource path="res://SpaceFont-Poster.tres" type="DynamicFont" id=3]
+[ext_resource path="res://SpaceFont-Regular.tres" type="DynamicFont" id=4]
+[ext_resource path="res://FaintlyTranslucentBackground.tres" type="StyleBox" id=5]
+[ext_resource path="res://SpaceFont.tres" type="DynamicFont" id=6]
+[ext_resource path="res://PickPlayer.gd" type="Script" id=7]
+[ext_resource path="res://MostlyTranslucentBackground.tres" type="StyleBox" id=8]
+[ext_resource path="res://EdgeOfTheGalaxyItalic-ZVJB3.otf" type="DynamicFontData" id=9]
+[ext_resource path="res://ConfirmAttack.gd" type="Script" id=10]
+
+[sub_resource type="DynamicFont" id=1]
+size = 23
+outline_color = Color( 0.752941, 0.878431, 1, 1 )
+extra_spacing_top = 7
+extra_spacing_char = 1
+font_data = ExtResource( 9 )
+
+[node name="TextureRect" type="TextureRect"]
+margin_left = 0.00118876
+margin_top = -96.5689
+margin_right = 1280.0
+margin_bottom = 623.431
+rect_scale = Vector2( 0.799928, 1.10307 )
+texture = ExtResource( 1 )
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="FleetContainer" type="HBoxContainer" parent="."]
+anchor_bottom = 1.0
+margin_top = 145.0
+margin_right = 1012.0
+margin_bottom = -90.0
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AttackContainer" type="VBoxContainer" parent="FleetContainer"]
+margin_left = 4.0
+margin_right = 504.0
+margin_bottom = 485.0
+
+[node name="AttackLabel" type="Label" parent="FleetContainer/AttackContainer"]
+margin_right = 500.0
+margin_bottom = 38.0
+custom_fonts/font = ExtResource( 3 )
+text = "Attack Fleet"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AttackFleet" type="ItemList" parent="FleetContainer/AttackContainer"]
+margin_top = 42.0
+margin_right = 500.0
+margin_bottom = 444.0
+rect_min_size = Vector2( 500, 300 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_styles/bg = ExtResource( 5 )
+custom_fonts/font = ExtResource( 4 )
+select_mode = 1
+allow_reselect = true
+allow_rmb_select = true
+fixed_icon_size = Vector2( 35, 35 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SelectContainer" type="HBoxContainer" parent="FleetContainer/AttackContainer"]
+margin_top = 448.0
+margin_right = 500.0
+margin_bottom = 485.0
+alignment = 1
+
+[node name="SelectAllAttack" type="Button" parent="FleetContainer/AttackContainer/SelectContainer"]
+margin_right = 248.0
+margin_bottom = 37.0
+size_flags_horizontal = 3
+custom_styles/disabled = ExtResource( 5 )
+custom_styles/normal = ExtResource( 5 )
+custom_fonts/font = ExtResource( 6 )
+text = "Select All"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SelectNoneAttack" type="Button" parent="FleetContainer/AttackContainer/SelectContainer"]
+margin_left = 252.0
+margin_right = 500.0
+margin_bottom = 37.0
+size_flags_horizontal = 3
+custom_styles/disabled = ExtResource( 5 )
+custom_styles/normal = ExtResource( 5 )
+custom_fonts/font = ExtResource( 6 )
+text = "Select None"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="DefenseContainer" type="VBoxContainer" parent="FleetContainer"]
+margin_left = 508.0
+margin_right = 1008.0
+margin_bottom = 485.0
+
+[node name="DefenseLabel" type="Label" parent="FleetContainer/DefenseContainer"]
+margin_right = 500.0
+margin_bottom = 38.0
+custom_fonts/font = ExtResource( 3 )
+text = "Defense Fleet"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="DefenseFleet" type="ItemList" parent="FleetContainer/DefenseContainer"]
+margin_top = 42.0
+margin_right = 500.0
+margin_bottom = 444.0
+rect_min_size = Vector2( 500, 300 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_styles/bg = ExtResource( 5 )
+custom_fonts/font = ExtResource( 4 )
+select_mode = 1
+allow_reselect = true
+allow_rmb_select = true
+fixed_icon_size = Vector2( 35, 35 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SelectContainer" type="HBoxContainer" parent="FleetContainer/DefenseContainer"]
+margin_top = 448.0
+margin_right = 500.0
+margin_bottom = 485.0
+alignment = 1
+
+[node name="SelectAllDefend" type="Button" parent="FleetContainer/DefenseContainer/SelectContainer"]
+margin_right = 248.0
+margin_bottom = 37.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_styles/disabled = ExtResource( 5 )
+custom_styles/normal = ExtResource( 5 )
+custom_fonts/font = ExtResource( 6 )
+text = "Select All"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SelectNoneDefense" type="Button" parent="FleetContainer/DefenseContainer/SelectContainer"]
+margin_left = 252.0
+margin_right = 500.0
+margin_bottom = 37.0
+size_flags_horizontal = 3
+custom_styles/disabled = ExtResource( 5 )
+custom_styles/normal = ExtResource( 5 )
+custom_fonts/font = ExtResource( 6 )
+text = "Select None"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ButtonContainer" type="VBoxContainer" parent="."]
+margin_left = 1027.17
+margin_top = 120.344
+margin_right = 1246.17
+margin_bottom = 509.344
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="StatusLabel" type="Label" parent="ButtonContainer"]
+margin_right = 219.0
+margin_bottom = 30.0
+custom_fonts/font = ExtResource( 4 )
+text = "Status:"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Status" type="RichTextLabel" parent="ButtonContainer"]
+margin_top = 34.0
+margin_right = 219.0
+margin_bottom = 69.0
+rect_min_size = Vector2( 219, 35 )
+custom_styles/normal = ExtResource( 8 )
+custom_fonts/normal_font = SubResource( 1 )
+text = "Preparing to Attack"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Spacer3" type="Control" parent="ButtonContainer"]
+margin_top = 73.0
+margin_right = 219.0
+margin_bottom = 197.0
+rect_min_size = Vector2( 0, 124 )
+
+[node name="AttackButton" type="MenuButton" parent="ButtonContainer"]
+margin_top = 201.0
+margin_right = 219.0
+margin_bottom = 251.0
+rect_min_size = Vector2( 0, 50 )
+custom_styles/disabled = ExtResource( 5 )
+custom_styles/normal = ExtResource( 8 )
+custom_fonts/font = ExtResource( 4 )
+text = "Attack"
+flat = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ConfirmAttack" type="ConfirmationDialog" parent="ButtonContainer/AttackButton"]
+visible = true
+margin_left = 407.175
+margin_top = -175.76
+margin_right = 859.175
+margin_bottom = -100.76
+window_title = "Attack"
+script = ExtResource( 10 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PickPlayer" type="PopupMenu" parent="ButtonContainer/AttackButton/ConfirmAttack"]
+margin_left = 8.0
+margin_top = 8.0
+margin_right = 444.0
+margin_bottom = 39.0
+allow_search = true
+script = ExtResource( 7 )
+
+[node name="Spacer4" type="Control" parent="ButtonContainer"]
+margin_top = 255.0
+margin_right = 219.0
+margin_bottom = 275.0
+rect_min_size = Vector2( 0, 20 )
+
+[node name="DefendButton" type="Button" parent="ButtonContainer"]
+margin_top = 279.0
+margin_right = 219.0
+margin_bottom = 329.0
+rect_min_size = Vector2( 0, 50 )
+custom_styles/disabled = ExtResource( 5 )
+custom_styles/normal = ExtResource( 8 )
+custom_fonts/font = ExtResource( 4 )
+text = "Defend"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Spacer5" type="Control" parent="ButtonContainer"]
+margin_top = 333.0
+margin_right = 219.0
+margin_bottom = 353.0
+rect_min_size = Vector2( 0, 20 )
+
+[node name="DefendButton2" type="Button" parent="ButtonContainer"]
+margin_top = 357.0
+margin_right = 219.0
+margin_bottom = 407.0
+rect_min_size = Vector2( 0, 50 )
+custom_styles/disabled = ExtResource( 5 )
+custom_styles/normal = ExtResource( 8 )
+custom_fonts/font = ExtResource( 4 )
+text = "Go Back"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Toast" type="Label" parent="."]
+anchor_right = 1.0
+margin_top = 90.0
+margin_bottom = 141.0
+custom_fonts/font = ExtResource( 6 )
+align = 1
+valign = 1
+autowrap = true
+[connection signal="pressed" from="FleetContainer/AttackContainer/SelectContainer/SelectAllAttack" to="." method="_on_SelectAllAttack_pressed"]
+[connection signal="pressed" from="FleetContainer/AttackContainer/SelectContainer/SelectNoneAttack" to="." method="_on_SelectNoneAttack_pressed"]
+[connection signal="pressed" from="FleetContainer/DefenseContainer/SelectContainer/SelectAllDefend" to="." method="_on_SelectAllDefend_pressed"]
+[connection signal="pressed" from="FleetContainer/DefenseContainer/SelectContainer/SelectNoneDefense" to="." method="_on_SelectNoneDefense_pressed"]
+[connection signal="pressed" from="ButtonContainer/AttackButton" to="." method="_on_AttackButton_pressed"]
+[connection signal="confirmed" from="ButtonContainer/AttackButton/ConfirmAttack" to="ButtonContainer/AttackButton/ConfirmAttack/PickPlayer" method="popup_centered"]
+[connection signal="index_pressed" from="ButtonContainer/AttackButton/ConfirmAttack/PickPlayer" to="." method="subtractFleetCost"]
+[connection signal="index_pressed" from="ButtonContainer/AttackButton/ConfirmAttack/PickPlayer" to="ButtonContainer/AttackButton/ConfirmAttack/PickPlayer" method="attackPlayer"]
+[connection signal="pressed" from="ButtonContainer/DefendButton" to="." method="_on_DefendButton_pressed"]
+[connection signal="pressed" from="ButtonContainer/DefendButton2" to="." method="GoBack"]

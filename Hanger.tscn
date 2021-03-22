@@ -1,0 +1,194 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://hangerBackground.jpeg" type="Texture" id=1]
+[ext_resource path="res://SpaceFont.tres" type="DynamicFont" id=2]
+[ext_resource path="res://Hanger.gd" type="Script" id=3]
+[ext_resource path="res://SpaceFont-Regular.tres" type="DynamicFont" id=4]
+[ext_resource path="res://SpaceFont-Poster.tres" type="DynamicFont" id=5]
+[ext_resource path="res://FaintlyTranslucentBackground.tres" type="StyleBox" id=6]
+[ext_resource path="res://EdgeOfTheGalaxyRegular-OVEa6.otf" type="DynamicFontData" id=7]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0.172549, 0.164706, 0.196078, 0.627451 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 50
+extra_spacing_top = 27
+font_data = ExtResource( 7 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 38
+font_data = ExtResource( 7 )
+
+[sub_resource type="DynamicFont" id=4]
+size = 45
+font_data = ExtResource( 7 )
+
+[sub_resource type="DynamicFont" id=5]
+size = 66
+font_data = ExtResource( 7 )
+
+[node name="Hanger" type="TextureRect"]
+margin_right = 2000.0
+margin_bottom = 1125.0
+rect_scale = Vector2( 0.512096, 0.533186 )
+texture = ExtResource( 1 )
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Status" type="Label" parent="."]
+anchor_right = 1.0
+margin_left = -2.39745
+margin_top = 50.6582
+margin_right = -2.39746
+margin_bottom = 161.658
+custom_fonts/font = ExtResource( 2 )
+align = 1
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ShipList" type="ItemList" parent="."]
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_left = 184.64
+margin_top = -410.645
+margin_right = 852.64
+margin_bottom = 340.355
+rect_min_size = Vector2( 500, 500 )
+custom_styles/bg = SubResource( 1 )
+custom_fonts/font = SubResource( 2 )
+allow_reselect = true
+fixed_icon_size = Vector2( 55, 55 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="DescriptionContainer" type="VBoxContainer" parent="."]
+margin_left = 899.346
+margin_top = 295.394
+margin_right = 1199.35
+margin_bottom = 835.394
+rect_scale = Vector2( 1.19406, 1.12102 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ShipIcon" type="TextureRect" parent="DescriptionContainer"]
+margin_right = 300.0
+margin_bottom = 130.0
+grow_horizontal = 2
+grow_vertical = 0
+rect_min_size = Vector2( 0, 130 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+expand = true
+
+[node name="Title" type="Label" parent="DescriptionContainer"]
+margin_top = 134.0
+margin_right = 300.0
+margin_bottom = 172.0
+custom_fonts/font = ExtResource( 5 )
+
+[node name="Description" type="RichTextLabel" parent="DescriptionContainer"]
+margin_top = 176.0
+margin_right = 300.0
+margin_bottom = 476.0
+rect_min_size = Vector2( 300, 300 )
+custom_styles/normal = ExtResource( 6 )
+custom_fonts/italics_font = ExtResource( 2 )
+custom_fonts/normal_font = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BuyButton" type="Button" parent="DescriptionContainer"]
+margin_top = 480.0
+margin_right = 300.0
+margin_bottom = 540.0
+rect_min_size = Vector2( 300, 60 )
+custom_fonts/font = SubResource( 3 )
+text = "Buy Ship"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Buttons" type="HBoxContainer" parent="."]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -554.0
+margin_top = -80.0
+margin_right = 554.0
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Cancel" type="Button" parent="Buttons"]
+visible = false
+margin_right = 500.0
+margin_bottom = 80.0
+rect_min_size = Vector2( 500, 80 )
+custom_fonts/font = SubResource( 4 )
+text = "Cancel"
+
+[node name="EndTurn" type="Button" parent="Buttons"]
+margin_left = 304.0
+margin_right = 804.0
+margin_bottom = 80.0
+rect_min_size = Vector2( 500, 80 )
+custom_fonts/font = SubResource( 4 )
+text = "Go Back"
+
+[node name="GridContainer" type="GridContainer" parent="."]
+margin_left = 1377.62
+margin_top = 169.642
+margin_right = 1865.62
+margin_bottom = 424.642
+columns = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CreditsLabel" type="Label" parent="GridContainer"]
+margin_right = 453.0
+margin_bottom = 72.0
+custom_fonts/font = SubResource( 5 )
+text = "Credits: "
+
+[node name="Credits" type="Label" parent="GridContainer"]
+margin_left = 457.0
+margin_right = 488.0
+margin_bottom = 72.0
+custom_fonts/font = SubResource( 5 )
+text = "0"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ManuFactoriesLabel" type="Label" parent="GridContainer"]
+margin_top = 76.0
+margin_right = 453.0
+margin_bottom = 148.0
+custom_fonts/font = SubResource( 5 )
+text = "ManuFactories:    "
+
+[node name="ManuFactories" type="Label" parent="GridContainer"]
+margin_left = 457.0
+margin_top = 76.0
+margin_right = 488.0
+margin_bottom = 148.0
+custom_fonts/font = SubResource( 5 )
+text = "0"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="item_selected" from="ShipList" to="." method="showDescription"]
+[connection signal="pressed" from="DescriptionContainer/BuyButton" to="." method="purchaseShip"]
+[connection signal="pressed" from="Buttons/Cancel" to="." method="goBack"]
+[connection signal="pressed" from="Buttons/EndTurn" to="." method="endTurn"]
