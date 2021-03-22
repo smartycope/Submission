@@ -74,7 +74,7 @@ remote func register_player(data):
     # Store the info
     Game.allPlayerData[id] = data
     # $Code.text = code
-    print("player registered", data)
+    print("player registered", data, "\nMy ID: ", id, "\nHis ID: ", get_tree().get_rpc_sender_id())
 
     updatePlayerList()
 
@@ -155,7 +155,7 @@ remote func post_configure_game():
 remotesync func playerReady(isReady):
     print("data: ", Game.allPlayerData)
     Game.allPlayerData[get_tree().get_rpc_sender_id()]['ready'] = isReady
-    
+
     if get_tree().is_network_server():
         for i in Game.allPlayerData.values():
             if not i["ready"]:
