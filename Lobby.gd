@@ -1,16 +1,10 @@
 extends TextureRect
 
-
-
 # var code = SERVER_IP
 export var readyIcon: Texture
 export var notReadyIcon: Texture
 
 onready var playerList = $VBoxContainer/PlayerList
-
-
-
-
 
 
 # Typical lobby implementation; imagine this being in /root/lobby.
@@ -21,8 +15,14 @@ func _ready():
     get_tree().connect("connection_failed", self, "_connected_fail")
     get_tree().connect("server_disconnected", self, "_server_disconnected")
     Game.player.status = "Connecting..."
+    # Game.status = "Hosting"
     updateStatus()
     updatePlayerList()
+
+    if get_tree().is_network_server():
+        $Code.text = Game.myIP
+    else:
+        $Code.text = Game.clientCode
 
 
 # Called on both clients and server when a peer connects. Send my info to it.

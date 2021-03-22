@@ -22,6 +22,8 @@ var currentTurnName = 'root'
 
 const MAX_PLAYERS = 20
 
+var clientCode = myIP
+
 var playerTurnOrder = []
 
 var ships = []
@@ -110,4 +112,5 @@ func startClient(ip=myIP):
     get_tree().network_peer = player.client
     mode = CLIENT
     status = "ignored"
+    clientCode = ip
     # $Code.text = code
