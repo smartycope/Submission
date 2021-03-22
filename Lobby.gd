@@ -28,7 +28,7 @@ func setAsServer(isServer, code=null):
         $Status.text = "Hosting"
     else:
         assert(code)
-        assert(code.size())
+        assert(code.length())
         # Initializing as a client, connecting to a given IP and port:
         Game.player.client = NetworkedMultiplayerENet.new()
         # Game.player.client.create_client(code, Game.port)
@@ -40,7 +40,7 @@ func setAsServer(isServer, code=null):
 
 # Typical lobby implementation; imagine this being in /root/lobby.
 func _ready():
-    get_tree().connect("network_peer_connected", self, "Game.player_player_connected")
+    get_tree().connect("network_peer_connected", self, "_player_connected")
     get_tree().connect("network_peer_disconnected", self, "_player_disconnected")
     get_tree().connect("connected_to_server", self, "_connected_ok")
     get_tree().connect("connection_failed", self, "_connected_fail")

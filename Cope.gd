@@ -43,7 +43,7 @@ class SceneLoader:
             call_deferred("_deferred_goto_scene", sceneName if isPath else "res://" + sceneName + ".tscn", freeCurrentScene)
 
     func _deferred_goto_scene(name, free=true):
-        var oldScene = current_scene.duplicate(true)
+        var oldScene = current_scene
 
         # Load the new scene.
         var s = ResourceLoader.load(name)
@@ -63,12 +63,12 @@ class SceneLoader:
         emit_signal("scene_ready", current_scene)
 
         # It is now safe to remove the old scene
-        if free:# and is_instance_valid(oldScene):
+        if free and is_instance_valid(oldScene):
             oldScene.free()
 
 
     func _deferred_load_scene(id, free=true):
-        var oldScene = current_scene.duplicate(true)
+        var oldScene = current_scene
 
         # Instance the new scene.
         current_scene = instanced_scenes[id]
@@ -85,7 +85,7 @@ class SceneLoader:
         emit_signal("scene_ready", current_scene)
 
         # It is now safe to remove the old scene
-        if free:# and is_instance_valid(oldScene):
+        if free and is_instance_valid(oldScene):
             oldScene.free()
 
 

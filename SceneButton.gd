@@ -8,4 +8,5 @@ func _ready():
 
 
 func switch_scene():
-    emit_signal("scene_recived", yield(Cope.gotoScene(scene), "scene_ready"))
+    var s = yield(Cope.gotoScene(scene), "scene_ready")
+    emit_signal("scene_recived", s)
