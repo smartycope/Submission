@@ -2,11 +2,12 @@ extends TextureRect
 
 
 func _ready():
-    pass
+    $Name.text = Game.player.name
 
 
 func setName(name):
     Game.player.name = name
+    Cope.setJSONvalue("settings.json", "name", name)
 
 
 func setPort(value):

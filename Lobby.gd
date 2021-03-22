@@ -1,19 +1,18 @@
 extends TextureRect
 
 export var MAX_PLAYERS = 20
-export var SERVER_IP = "10.49.176.109"
-var code = SERVER_IP
+var SERVER_IP = IP.get_local_addresses()[0]
+# var code = SERVER_IP
 export var readyIcon: Texture
 export var notReadyIcon: Texture
 
 onready var playerList = $VBoxContainer/PlayerList
-# onready var statusNode = $Label4
 
-# Player info, associate ID to data
-var everyonesData = {}
-var players_done = []
 # Info we send to other players
 var myData = {name = Game.player.name, ready = false}
+# Player info, associate ID to data
+var everyonesData = {1: myData}
+var players_done = []
 
 
 
@@ -26,10 +25,9 @@ func setAsServer(isServer, code=null):
         get_tree().network_peer = Game.server
         $Code.text = SERVER_IP
         $Status.text = "Hosting"
-        Cope.popup("GENIUS", "You genius you")
     else:
         assert(code)
-        assert(code.length())
+        # assert(code.length())
         # Initializing as a client, connecting to a given IP and port:
         Game.player.client = NetworkedMultiplayerENet.new()
         # Game.player.client.create_client(code, Game.port)
@@ -46,6 +44,7 @@ func _ready():
     get_tree().connect("connected_to_server", self, "_connected_ok")
     get_tree().connect("connection_failed", self, "_connected_fail")
     get_tree().connect("server_disconnected", self, "_server_disconnected")
+    updatePlayerList()
 
 
 # Called on both clients and server when a peer connects. Send my info to it.
@@ -56,6 +55,7 @@ func _player_connected(id):
 func _player_disconnected(id):
     everyonesData.erase(id) # Erase player from info.
     $Status.text = "Disconnected"
+    updatePlayerList()
 
 
 func _connected_ok():
@@ -66,6 +66,7 @@ func _connected_ok():
 
 func _server_disconnected():
     $Status.text = "Disconnected"
+    updatePlayerList()
     if not get_tree().is_network_server():
         # Server kicked us; show error and abort.
         Cope.popup("Disconnected", "Whoops! You've been disconnected from the game.")
@@ -82,7 +83,8 @@ remote func register_player(data):
     # Store the info
     everyonesData[id] = data
 
-    $Code.text = code
+    # $Code.text = code
+    print("player registered", data)
 
     updatePlayerList()
 

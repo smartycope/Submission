@@ -1,7 +1,7 @@
 [
     {
         "name": "Miner 101",
-        "icon": "res://nullShipIcon.png",
+        "icon": "res://icon.png",
         "cost": 1,
         "description": "A regular mining ship",
         "energy": 0,

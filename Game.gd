@@ -25,6 +25,7 @@ enum {AI, SERVER, CLIENT}
 
 func _ready():
     nullShip.used = true
+
     for i in Cope.getJSON('ships.json'):
         ships.append(Ship.new(i))
 
@@ -41,7 +42,7 @@ func _ready():
 
     var Player = load("res://Player.gd")
 
-    players.append(Player.new('Cope', useableShips))
+    players.append(Player.new(Cope.getJSONvalue("settings.json", "name"), useableShips))
     player = players[0]
     players.append(Ai.new(Ai.EASY))
 

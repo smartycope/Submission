@@ -110,21 +110,29 @@ func gotoScene(name, freeScene=true, isPath=false):
 static func getJSON(filename):
     var file = File.new()
     file.open("res://" + filename, File.READ)
+    # var data = file.get_var()
+    # file.close()
+    # return data
+
     var json = JSON.parse(file.get_as_text())
     file.close()
-
     assert(json.error == OK)
-
     return json.result
 
 
-static func setJSON(filename):
+static func setJSON(filename, data, full=false):
     var file = File.new()
     file.open("res://" + filename, File.WRITE)
-    # var json = JSON.parse(file.get_as_text())
-    # file.
-    print("You haven't actually written this function yet, bozo.")
-    assert(false)
+    # file.store_var(data)
+    file.store_var(to_json(data), full)
     file.close()
 
-    #assert(json.error == OK)
+
+static func setJSONvalue(filename, key, value):
+    var data = getJSON(filename)
+    data[key] = value
+    setJSON(filename, data)
+
+
+static func getJSONvalue(filename, key):
+    return getJSON(filename)[key]
