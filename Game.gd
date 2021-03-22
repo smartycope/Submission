@@ -99,7 +99,7 @@ func startServer():
     # $Status.text = "Hosting"
     mode = SERVER
     status = "Hosting"
-    allPlayerData[0] = player.getNetworkingData()
+    allPlayerData[1] = player.getNetworkingData()
 
 
 func startClient(ip=myIP):

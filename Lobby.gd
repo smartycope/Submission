@@ -151,6 +151,7 @@ remote func post_configure_game():
 
 
 remotesync func playerReady(isReady):
+    print("data: ", Game.allPlayerData)
     Game.allPlayerData[get_tree().get_rpc_sender_id()]['ready'] = isReady
 
     if get_tree().is_network_server():
