@@ -21,6 +21,12 @@ func toast(labelNode, text, time=2.5):
     if is_instance_valid(labelNode):
         labelNode.text = ""
 
+func popup(title, text):
+    var p = AcceptDialog.new()
+    p.window_title = title
+    p.dialog_text = text
+    get_tree().get_root().add_child(p)
+    p.popup_centered()
 
 class SceneLoader:
     extends Object

@@ -26,6 +26,7 @@ func setAsServer(isServer, code=null):
         get_tree().network_peer = Game.server
         $Code.text = SERVER_IP
         $Status.text = "Hosting"
+        Cope.popup("GENIUS", "You genius you")
     else:
         assert(code)
         assert(code.length())
@@ -67,10 +68,7 @@ func _server_disconnected():
     $Status.text = "Disconnected"
     if not get_tree().is_network_server():
         # Server kicked us; show error and abort.
-        var p = PopupDialog.new()
-        get_tree().get_root().add_child(p)
-        p.text = "Whoops! You've been disconnected from the game."
-        p.popup_centered()
+        Cope.popup("Disconnected", "Whoops! You've been disconnected from the game.")
 
 
 func _connected_fail():
@@ -92,7 +90,7 @@ remote func register_player(data):
 func updatePlayerList():
     playerList.clear()
     for i in everyonesData.values():
-        playerList.add_child(i["name"], readyIcon if i["ready"] else notReadyIcon)
+        playerList.add_item(i["name"], readyIcon if i["ready"] else notReadyIcon)
 
 
 func startGame():
@@ -165,3 +163,7 @@ remotesync func playerReady(isReady):
 
 func _on_StartButton_pressed():
     rpc("playerReady", true)
+
+
+
+# git add .; git commit -m "minor networking changes"; git push origin master
