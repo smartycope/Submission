@@ -4,15 +4,25 @@ var nullShip = Ship.new("You've run out of ships", "res://nullShipIcon.png", -1,
 
 var Ai = load("res://AI.gd")
 
-var turn = 1
+var myIP = IP.get_local_addresses()[0]
 
+var turn = 1
+var status = 'Hosting'
 var port = 6667
+
+var allPlayerData = {}
+var playersDoneLoading = []
 
 # players is now a list of names
 var players = []
 var player = null # The current player
 var turnIndex = 0 # The index of the player who's turn it currently is
 const startingDeckSize = 10
+var currentTurnName = 'root'
+
+const MAX_PLAYERS = 20
+
+var playerTurnOrder = []
 
 var ships = []
 var useableShips = []
@@ -47,27 +57,25 @@ func _ready():
     players.append(Ai.new(Ai.EASY))
 
 
-func endTurn():
+remote func endTurn():
     turn += 1
 
-    # players[turnIndex].energy = 1
-    player.energy = 1
-    # players[turnIndex].manufactories = 1
-    player.manufactories = 1
-    # players[turnIndex].credits = 0
-    player.credits = 0
-    # players[turnIndex].attack = 1
-    player.attack = 1
-    # players[turnIndex].defense = 2
-    player.defense = 2
-    # players[turnIndex].shuffleDiscardPile()
-    # player.shuffleDiscardPile()
-
-    if mode == AI or get_tree().is_network_server():
+    if get_tree().is_network_server():
         turnIndex = turn - 1
         turnIndex = wrapi(turnIndex, 0, players.size() - 1)
+
+    rpc("itsIDsTurn", playerTurnOrder[turnIndex])
+
+
         # players[turnIndex].takeTurn(false) # This parameter must change eventually
         # rpc
+
+
+remote func itsIDsTurn(id):
+    currentTurnName = allPlayerData[id]['name']
+    if player.id == id:
+        player.takeTurn()
+
 
 
 func attack(player):
@@ -79,3 +87,27 @@ func getPlayerByName(name):
     for i in players:
         names.append(i.name)
     return players[names.find(name)]
+
+
+
+func startServer():
+    # Initializing as a server, listening on the given port, with a given maximum number of peers:
+    server = NetworkedMultiplayerENet.new()
+    server.create_server(port, MAX_PLAYERS)
+    get_tree().network_peer = Game.server
+    # $Code.text = SERVER_IP
+    # $Status.text = "Hosting"
+    mode = SERVER
+    status = "Hosting"
+
+func startClient(ip=myIP):
+    # assert(code)
+    # assert(code.length())
+    # Initializing as a client, connecting to a given IP and port:
+    player.client = NetworkedMultiplayerENet.new()
+    # Game.player.client.create_client(code, Game.port)
+    player.client.create_client(ip, port)
+    get_tree().network_peer = player.client
+    mode = CLIENT
+    status = "ignored"
+    # $Code.text = code

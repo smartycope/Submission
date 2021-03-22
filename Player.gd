@@ -6,8 +6,6 @@ var shipDeck = []
 var drawPile = []
 var discardPile = []
 var icon: Texture = null
-var id: int
-
 # var underAttack = false
 
 
@@ -19,6 +17,9 @@ var attack = 1
 var defense = 2
 
 var client = null
+var id: int
+var ready = false
+var status = "Not Connecting"
 
 signal reshuffle
 signal allCardsInUse
@@ -49,11 +50,20 @@ func shuffleDiscardPile():
     discardPile = []
 
 
-func takeTurn(underAttack):
+puppet func takeTurn(underAttack):
     if underAttack:
         yield(Cope.gotoScene("CommandFeuge"), "scene_ready").setAsAttack(true)
     else:
         Cope.gotoScene("SpaceStationMenu")
+
+
+master func endTurn():
+    energy = 1
+    manufactories = 1
+    credits = 0
+    attack = 1
+    defense = 2
+    rpc_id(1, "endTurn")
 
 
 func _init(name, startingShips):
@@ -62,6 +72,11 @@ func _init(name, startingShips):
     shipDeck = startingShips
 
     drawPile = [] + shipDeck
+
+
+func getNetworkingData():
+    return {name = name, ready = ready}
+
 
 remote func init(availableShips):
     shipDeck = availableShips
