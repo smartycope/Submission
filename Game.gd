@@ -79,7 +79,6 @@ remote func itsIDsTurn(id):
         player.takeTurn()
 
 
-
 func attack(player):
     pass
 
@@ -91,7 +90,6 @@ func getPlayerByName(name):
     return players[names.find(name)]
 
 
-
 func startServer():
     # Initializing as a server, listening on the given port, with a given maximum number of peers:
     server = NetworkedMultiplayerENet.new()
@@ -101,6 +99,8 @@ func startServer():
     # $Status.text = "Hosting"
     mode = SERVER
     status = "Hosting"
+    allPlayerData[0] = player.getNetworkingData()
+
 
 func startClient(ip=myIP):
     # assert(code)
@@ -113,4 +113,5 @@ func startClient(ip=myIP):
     mode = CLIENT
     status = "ignored"
     clientCode = ip
+    allPlayerData[0] = player.getNetworkingData()
     # $Code.text = code

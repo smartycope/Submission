@@ -70,7 +70,7 @@ remote func register_player(data):
     # Get the id of the RPC sender.
     var id = get_tree().get_rpc_sender_id()
     # Store the info
-    Game.everyonesData[id] = data
+    Game.allPlayerData[id] = data
     # $Code.text = code
     print("player registered", data)
 
