@@ -162,8 +162,9 @@ func endTurn():
 
 
 func updateTurn():
+    print("called updateTurn(). $WaitingPopup is ", $WaitingPopup, ", Game.currentTurnName is %s, and my player's name is %s." % [Game.currentTurnName, Game.player.name])
     if is_instance_valid($WaitingPopup):
-        if Game.currentTurnName != name:
+        if Game.currentTurnName != Game.player.name:
             $WaitingPopup.popup()
             $WaitingPopup.visible = true
             $WaitingPopup/PlayerLabel.text = "It is currently %s's turn" % Game.currentTurnName
