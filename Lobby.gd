@@ -90,6 +90,7 @@ func startGame():
 
 
 remotesync func pre_configure_game():
+    print('starting preconfiguring')
     assert(get_tree().get_rpc_sender_id() == 1)
     get_tree().set_pause(true) # Pre-pause
     # The rest is the same as in the code in the previous section (look above)
@@ -116,8 +117,9 @@ remotesync func pre_configure_game():
 
     Game.currentTurnName = Game.allPlayerData[1]['name']
 
-    world.updateTurn()
+    print("almost done preconfiguring and data is: ", Game.allPlayerData)
 
+    world.updateTurn()
 
     # var my_player = preload("res://player.tscn").instance()
     # my_player.set_name(str(selfPeerID))

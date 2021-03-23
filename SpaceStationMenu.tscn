@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://SpaceFont.tres" type="DynamicFont" id=1]
 [ext_resource path="res://EnergyIcon.png" type="Texture" id=2]
@@ -8,7 +8,6 @@
 [ext_resource path="res://attackIcon-edited.png" type="Texture" id=6]
 [ext_resource path="res://defenseIcon-edited.png" type="Texture" id=7]
 [ext_resource path="res://EdgeOfTheGalaxyItalic-ZVJB3.otf" type="DynamicFontData" id=8]
-[ext_resource path="res://WaitingPopup.tscn" type="PackedScene" id=9]
 
 [sub_resource type="Theme" id=1]
 
@@ -27,8 +26,6 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 emptyPortText = "This port is empty."
-
-[node name="WaitingPopup" parent="." instance=ExtResource( 9 )]
 
 [node name="Resources" type="VBoxContainer" parent="."]
 anchor_left = 1.0
