@@ -11,8 +11,8 @@ onready var defenseNode = $Resources/ResourcesAndInfo/ResourcesGrid/Defense
 onready var totalShipsNode = $Resources/ResourcesAndInfo/InfoGrid/TotalShips
 onready var turnNode = $Resources/ResourcesAndInfo/InfoGrid/Turn
 
-onready var waitingPopup = $WaitingPopup
-onready var playerLabel  = $WaitingPopup/PlayerLabel
+onready var waitingPopup = null
+onready var playerLabel  = null
 
 
 export var emptyPortText = "This is port is empty."
@@ -171,14 +171,25 @@ func endTurn():
 
 func updateTurn():
     print("called updateTurn(). $WaitingPopup is ", waitingPopup, ", Game.currentTurnName is %s, and my player's name is %s." % [Game.currentTurnName, Game.player.name])
-    # if is_instance_valid():
     if Game.currentTurnName != Game.player.name:
-        waitingPopup.popup()
-        # waitingPopup.visible = true
-        playerLabel.text = "It's %s's turn" % Game.currentTurnName
+        waiting()
     else:
-        # waitingPopup.visible = false
-        waitingPopup.queue_free()
+        notWaiting()
+
+
+func waiting():
+    waitingPopup = load("res://WaitingPopup.tscn").instance()
+    get_node(".").addChild(waitingPopup)
+    playerLabel = waitingPopup.get_node("PlayerLabel")
+    waitingPopup.popup()
+    playerLabel.text = "It's %s's turn" % Game.currentTurnName
+
+func notWaiting():
+    waitingPopup.free()
+    waitingPopup = null
+    playerLabel  = null
+
+
 
 
 remote func turn_finished():
