@@ -44,6 +44,10 @@ func _ready():
     updateShipList()
     updateResources()
 
+    print("SSMenu._ready() is almost finished running")
+    updateTurn()
+    print("SSMenu._ready() is finished running")
+
 
 func updateResources():
     energyNode.text = str(Game.player.energy)
@@ -166,10 +170,11 @@ func updateTurn():
     if is_instance_valid($WaitingPopup):
         if Game.currentTurnName != Game.player.name:
             $WaitingPopup.popup()
-            $WaitingPopup.visible = true
-            $WaitingPopup/PlayerLabel.text = "It is currently %s's turn" % Game.currentTurnName
+            # $WaitingPopup.visible = true
+            $WaitingPopup/PlayerLabel.text = "It's %s's turn" % Game.currentTurnName
         else:
-            $WaitingPopup.visible = false
+            # $WaitingPopup.visible = false
+            $WaitingPopup.hide()
 
 
 remote func turn_finished():
