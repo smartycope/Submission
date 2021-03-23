@@ -162,7 +162,7 @@ func endTurn():
 
 
 func updateTurn():
-    if is_instance_valid(self):
+    if is_instance_valid($WaitingPopup):
         if Game.currentTurnName != name:
             $WaitingPopup.popup()
             $WaitingPopup.visible = true
