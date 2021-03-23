@@ -54,9 +54,9 @@ func _connected_ok():
 
 
 func _server_disconnected():
-    if not get_tree().is_network_server():
-        Game.player.status = "Disconnected"
-        Cope.popup("Disconnected", "Whoops! You've been disconnected from the game.")
+    # if not get_tree().is_network_server():
+    Game.player.status = "Disconnected"
+    Cope.popup("Disconnected", "Whoops! You've been disconnected from the game.")
     updateStatus()
     updatePlayerList()
 
@@ -87,10 +87,6 @@ func updatePlayerList():
 
 func startGame():
     rpc("pre_configure_game")
-
-
-remote func
-
 
 
 remotesync func pre_configure_game():
