@@ -114,6 +114,8 @@ remotesync func pre_configure_game():
     var myID = get_tree().get_network_unique_id()
     Game.player.id = myID
 
+    Game.currentTurnName = Game.playerTurnOrder[0]
+
     world.updateTurn()
 
 
@@ -158,6 +160,9 @@ remote func post_configure_game():
 remotesync func playerReady(isReady):
     print("data: ", Game.allPlayerData)
     Game.allPlayerData[get_tree().get_rpc_sender_id()]['ready'] = isReady
+
+    updateStatus()
+    updatePlayerList()
 
     if get_tree().is_network_server():
         for i in Game.allPlayerData.values():

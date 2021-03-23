@@ -526,7 +526,7 @@ __meta__ = {
 position = Vector2( 526.815, 368.439 )
 scale = Vector2( 0.712888, 0.712888 )
 frames = SubResource( 3 )
-frame = 83
+frame = 47
 speed_scale = 5.5
 playing = true
 [connection signal="item_activated" from="Ships/ShipContainer/ShipsGrid/ShipList" to="." method="shipUsed"]

@@ -310,6 +310,7 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_fonts/font = SubResource( 3 )
 allow_reselect = true
+fixed_icon_size = Vector2( 35, 35 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -333,7 +334,6 @@ __meta__ = {
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 position = Vector2( 986.324, 641.938 )
 frames = SubResource( 6 )
-frame = 121
 speed_scale = 5.5
 playing = true
 
