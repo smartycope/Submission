@@ -178,7 +178,7 @@ func updateTurn():
         playerLabel.text = "It's %s's turn" % Game.currentTurnName
     else:
         # waitingPopup.visible = false
-        waitingPopup.hide()
+        waitingPopup.queue_free()
 
 
 remote func turn_finished():

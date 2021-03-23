@@ -360,10 +360,6 @@ __meta__ = {
 visible = true
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 2.65366
-margin_top = -3.98053
-margin_right = 2.65369
-margin_bottom = -3.98053
 popup_exclusive = true
 __meta__ = {
 "_edit_use_anchors_": false
