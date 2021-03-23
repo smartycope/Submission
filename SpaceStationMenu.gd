@@ -179,7 +179,7 @@ func updateTurn():
 
 func waiting():
     waitingPopup = load("res://WaitingPopup.tscn").instance()
-    get_node(".").addChild(waitingPopup)
+    get_node(".").add_child(waitingPopup)
     playerLabel = waitingPopup.get_node("PlayerLabel")
     waitingPopup.popup()
     playerLabel.text = "It's %s's turn" % Game.currentTurnName
