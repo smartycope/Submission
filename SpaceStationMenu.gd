@@ -23,6 +23,7 @@ func disableAll():
     for i in shipList.get_item_count():
         shipList.set_item_disabled(i, true)
 
+
 func _ready():
     dockingPorts = ["Docking Port 1", "Docking Port 2", "Docking Port 3", "Docking Port 4", "Docking Port 5"]
     dockedShips  = []
@@ -158,6 +159,15 @@ func endTurn():
 
     # updateShipList()
     # updateResources()
+
+
+func updateTurn():
+    if Game.currentTurnName != name:
+        $WaitingPopup.popup()
+        $WaitingPopup.visible = true
+        $WaitingPopup/PlayerLabel.text = "It is currently %s's turn" % Game.currentTurnName
+    else:
+        $WaitingPopup.visible = false
 
 
 remote func turn_finished():

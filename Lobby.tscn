@@ -1,4 +1,4 @@
-[gd_scene load_steps=183 format=2]
+[gd_scene load_steps=185 format=2]
 
 [ext_resource path="res://lobby.jpeg" type="Texture" id=1]
 [ext_resource path="res://EdgeOfTheGalaxyRegular-OVEa6.otf" type="DynamicFontData" id=2]
@@ -175,6 +175,8 @@
 [ext_resource path="res://EdgeOfTheGalaxyPoster-3zRAp.otf" type="DynamicFontData" id=173]
 [ext_resource path="res://Lobby.gd" type="Script" id=174]
 [ext_resource path="res://SceneButton.gd" type="Script" id=175]
+[ext_resource path="res://readyIcon.png" type="Texture" id=176]
+[ext_resource path="res://nullShipIcon.png" type="Texture" id=177]
 
 [sub_resource type="DynamicFont" id=1]
 size = 30
@@ -222,6 +224,8 @@ script = ExtResource( 174 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+readyIcon = ExtResource( 176 )
+notReadyIcon = ExtResource( 177 )
 
 [node name="Label2" type="Label" parent="."]
 anchor_left = 0.5
@@ -329,7 +333,7 @@ __meta__ = {
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 position = Vector2( 986.324, 641.938 )
 frames = SubResource( 6 )
-frame = 20
+frame = 121
 speed_scale = 5.5
 playing = true
 

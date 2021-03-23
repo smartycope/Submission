@@ -25,6 +25,8 @@ func popup(title, text):
     var p = AcceptDialog.new()
     p.window_title = title
     p.dialog_text = text
+    p.popup_exclusive = false
+    p.connect("confirmed", p, "free")
     get_tree().get_root().add_child(p)
     p.popup_centered()
 

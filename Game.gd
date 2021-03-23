@@ -75,6 +75,8 @@ remote func endTurn():
 
 remote func itsIDsTurn(id):
     currentTurnName = allPlayerData[id]['name']
+    if get_tree().current_scene.name == "SpaceStationMenu":
+        get_tree().current_scene.updateTurn()
     if player.id == id:
         player.takeTurn()
 
