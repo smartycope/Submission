@@ -178,16 +178,18 @@ func updateTurn():
 
 
 func waiting():
-    waitingPopup = load("res://WaitingPopup.tscn").instance()
-    get_node(".").add_child(waitingPopup)
-    playerLabel = waitingPopup.get_node("PlayerLabel")
-    waitingPopup.popup()
-    playerLabel.text = "It's %s's turn" % Game.currentTurnName
+    # waitingPopup = load("res://WaitingPopup.tscn").instance()
+    # get_node(".").add_child(waitingPopup)
+    # playerLabel = waitingPopup.get_node("PlayerLabel")
+    # waitingPopup.popup()
+    # playerLabel.text = "It's %s's turn" % Game.currentTurnName
+    Cope.popup('Waiting for other players', "It's %s's turn" % Game.currentTurnName)
 
 func notWaiting():
-    waitingPopup.free()
-    waitingPopup = null
-    playerLabel  = null
+    pass
+    # waitingPopup.free()
+    # waitingPopup = null
+    # playerLabel  = null
 
 
 
