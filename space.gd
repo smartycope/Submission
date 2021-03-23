@@ -19,3 +19,9 @@ func _on_Rules_pressed():
 
 func _on_Profile_pressed():
     Cope.gotoScene("Profile")
+
+
+export var _name: String
+
+func _ready():
+    Game.player.name = _name
