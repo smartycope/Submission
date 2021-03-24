@@ -16,7 +16,7 @@ onready var playerLabel  = null
 
 
 export var emptyPortText = "This is port is empty."
-export var emptyPortTooltip = null
+export var emptyPortTooltip = ''
 
 var dockingPorts
 var dockedShips
@@ -29,6 +29,8 @@ func disableAll():
 
 
 func _ready():
+    set_process_input(true)
+
     dockingPorts = ["Docking Port 1", "Docking Port 2", "Docking Port 3", "Docking Port 4", "Docking Port 5"]
     dockedShips  = []
 
@@ -51,6 +53,12 @@ func _ready():
     # print("SSMenu._ready() is almost finished running")
     # updateTurn()
     print("SSMenu._ready() is finished running")
+
+
+func _input(event):
+    if(event is InputEventMouseButton && event.button_index == BUTTON_LEFT):
+        print("Clicked!")
+        print_tree_pretty()
 
 
 func updateResources():
@@ -170,12 +178,11 @@ func endTurn():
 
 
 func updateTurn():
-    pass
-    # print("called updateTurn(). $WaitingPopup is ", waitingPopup, ", Game.currentTurnName is %s, and my player's name is %s." % [Game.currentTurnName, Game.player.name])
-    # if Game.currentTurnName != Game.player.name:
-    #     waiting()
-    # else:
-    #     notWaiting()
+    print("called updateTurn(). $WaitingPopup is ", waitingPopup, ", Game.currentTurnName is %s, and my player's name is %s." % [Game.currentTurnName, Game.player.name])
+    if Game.currentTurnName != Game.player.name:
+        waiting()
+    else:
+        notWaiting()
 
 
 func waiting():
@@ -184,16 +191,14 @@ func waiting():
     # playerLabel = waitingPopup.get_node("PlayerLabel")
     # waitingPopup.popup()
     # playerLabel.text = "It's %s's turn" % Game.currentTurnName
-    return
     Cope.popup('Waiting for other players', "It's %s's turn" % Game.currentTurnName)
+
 
 func notWaiting():
     pass
     # waitingPopup.free()
     # waitingPopup = null
     # playerLabel  = null
-
-
 
 
 remote func turn_finished():

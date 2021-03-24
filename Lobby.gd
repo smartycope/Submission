@@ -156,6 +156,8 @@ remote func post_configure_game():
     # Only the server is allowed to tell a client to unpause
     if get_tree().get_rpc_sender_id() == 1:
         get_tree().set_pause(false)
+        get_tree().get_root().get_node("Lobby").free()
+
         # Game starts now!
 
 

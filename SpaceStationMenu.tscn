@@ -26,7 +26,6 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 emptyPortText = "This port is empty."
-emptyPortTooltip = null
 
 [node name="Resources" type="VBoxContainer" parent="."]
 anchor_left = 1.0
