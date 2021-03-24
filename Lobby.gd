@@ -101,7 +101,7 @@ remotesync func pre_configure_game():
     get_node("/root").add_child(world)
     get_tree().set_current_scene(world)
 
-    # Cope.gotoScene("SpaceStationMenu", false)
+    # var world = yield(Cope.gotoScene("SpaceStationMenu", true), "scene_ready")
 
     if get_tree().is_network_server():
         rset("Game.useableShips", Game.useableShips)
@@ -153,9 +153,11 @@ remote func done_preconfiguring():
 
 
 remote func post_configure_game():
+    print('post configuring')
     # Only the server is allowed to tell a client to unpause
     if get_tree().get_rpc_sender_id() == 1:
         get_tree().set_pause(false)
+        print("pause is now set to: ", get_tree().paused)
         get_tree().get_root().get_node("Lobby").free()
 
         # Game starts now!
