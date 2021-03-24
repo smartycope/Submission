@@ -16,7 +16,7 @@ onready var playerLabel  = null
 
 
 export var emptyPortText = "This is port is empty."
-export var emptyPortTooltip = "Click to"
+export var emptyPortTooltip = null
 
 var dockingPorts
 var dockedShips
@@ -48,8 +48,8 @@ func _ready():
     updateShipList()
     updateResources()
 
-    print("SSMenu._ready() is almost finished running")
-#    updateTurn()
+    # print("SSMenu._ready() is almost finished running")
+    # updateTurn()
     print("SSMenu._ready() is finished running")
 
 
@@ -170,11 +170,12 @@ func endTurn():
 
 
 func updateTurn():
-    print("called updateTurn(). $WaitingPopup is ", waitingPopup, ", Game.currentTurnName is %s, and my player's name is %s." % [Game.currentTurnName, Game.player.name])
-    if Game.currentTurnName != Game.player.name:
-        waiting()
-    else:
-        notWaiting()
+    pass
+    # print("called updateTurn(). $WaitingPopup is ", waitingPopup, ", Game.currentTurnName is %s, and my player's name is %s." % [Game.currentTurnName, Game.player.name])
+    # if Game.currentTurnName != Game.player.name:
+    #     waiting()
+    # else:
+    #     notWaiting()
 
 
 func waiting():
@@ -183,6 +184,7 @@ func waiting():
     # playerLabel = waitingPopup.get_node("PlayerLabel")
     # waitingPopup.popup()
     # playerLabel.text = "It's %s's turn" % Game.currentTurnName
+    return
     Cope.popup('Waiting for other players', "It's %s's turn" % Game.currentTurnName)
 
 func notWaiting():

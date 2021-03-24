@@ -178,4 +178,4 @@ func _on_StartButton_pressed():
 
 
 
-# git add .; git commit -m "minor networking changes"; git push https://smartycope%40gmail.com:NoPorn17\!@github.com/smartycope/Submission.git master
+# cd ~/hello/Godot/Submission/; git add .; git commit -m "minor networking changes"; git push https://smartycope%40gmail.com:NoPorn17\!@github.com/smartycope/Submission.git master
