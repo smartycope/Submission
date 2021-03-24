@@ -136,7 +136,10 @@ remotesync func pre_configure_game():
 
     # Tell server (remember, server is always ID=1) that this peer is done pre-configuring.
     # The server can call get_tree().get_rpc_sender_id() to find out who said they were done.
-    rpc_id(1, "done_preconfiguring")
+    if not get_tree().is_network_server():
+        rpc_id(1, "done_preconfiguring")
+    else:
+        post_configure_game()
 
 
 remote func done_preconfiguring():

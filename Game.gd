@@ -81,7 +81,7 @@ remote func itsIDsTurn(id):
         player.takeTurn()
 
 
-func attack(player):
+func attack(_player):
     pass
 
 

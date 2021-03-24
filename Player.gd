@@ -66,8 +66,8 @@ master func endTurn():
     Game.rpc_id(1, "endTurn")
 
 
-func _init(name, startingShips):
-    self.name = name
+func _init(_name, startingShips):
+    self.name = _name
 
     shipDeck = startingShips
 
