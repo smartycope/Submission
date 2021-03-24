@@ -49,7 +49,7 @@ func _ready():
     updateResources()
 
     print("SSMenu._ready() is almost finished running")
-    updateTurn()
+#    updateTurn()
     print("SSMenu._ready() is finished running")
 
 
