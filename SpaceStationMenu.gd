@@ -201,7 +201,9 @@ func waiting():
 func notWaiting():
     print_tree_pretty()
     if is_instance_valid($WaitingPopup):
-        $WaitingPopup.free()
+        $WaitingPopup.queue_free()
+    print_tree_pretty()
+    shipList.grab_focus()
     # waitingPopup.free()
     # waitingPopup = null
     # playerLabel  = null
