@@ -11,8 +11,8 @@ onready var defenseNode = $Resources/ResourcesAndInfo/ResourcesGrid/Defense
 onready var totalShipsNode = $Resources/ResourcesAndInfo/InfoGrid/TotalShips
 onready var turnNode = $Resources/ResourcesAndInfo/InfoGrid/Turn
 
-onready var waitingPopup = null
-onready var playerLabel  = null
+var waitingPopup = load("res://WaitingPopup.tscn").instance()
+onready var playerLabel  = waitingPopup.get_node("PlayerLabel")
 
 
 export var emptyPortText = "This is port is empty."
@@ -191,11 +191,12 @@ func waiting():
     # playerLabel = waitingPopup.get_node("PlayerLabel")
     # waitingPopup.popup()
     # playerLabel.text = "It's %s's turn" % Game.currentTurnName
-    Cope.popup('Waiting for other players', "It's %s's turn" % Game.currentTurnName)
+    # Cope.popup('Waiting for other players', "It's %s's turn" % Game.currentTurnName)
+    get_tree().current_scene.add_child(waitingPopup)
 
 
 func notWaiting():
-    pass
+    $waitingPopup.free()
     # waitingPopup.free()
     # waitingPopup = null
     # playerLabel  = null

@@ -144,6 +144,7 @@ remotesync func pre_configure_game():
 
 remote func done_preconfiguring():
     var who = get_tree().get_rpc_sender_id()
+    print(who, " is done_preconfiguring!")
     # Here are some checks you can do, for example
     assert(get_tree().is_network_server())
     assert(who in Game.allPlayerData) # Exists
