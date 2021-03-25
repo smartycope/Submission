@@ -78,7 +78,7 @@ remote func itsIDsTurn(id):
     if get_tree().current_scene.name == "SpaceStationMenu":
         get_tree().current_scene.updateTurn()
     if player.id == id:
-        player.takeTurn()
+        player.takeTurn(false) # todo add attacking
 
 
 func attack(_player):

@@ -14,6 +14,7 @@ onready var turnNode = $Resources/ResourcesAndInfo/InfoGrid/Turn
 var waitingPopup = load("res://WaitingPopup.tscn").instance()
 onready var playerLabel  = waitingPopup.get_node("PlayerLabel")
 
+export var notMyTurnText = "It's %s's turn."
 
 export var emptyPortText = "This is port is empty."
 export var emptyPortTooltip = ''
@@ -194,7 +195,7 @@ func waiting():
     # Cope.popup('Waiting for other players', "It's %s's turn" % Game.currentTurnName)
     get_tree().get_root().get_node("SpaceStationMenu").add_child(waitingPopup, true)
     $WaitingPopup.popup_centered()
-    $WaitingPopup/PlayerLabel.text = Game.currentTurnName
+    $WaitingPopup/PlayerLabel.text =  notMyTurnText % Game.currentTurnName
 
 
 func notWaiting():
