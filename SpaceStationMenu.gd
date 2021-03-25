@@ -29,7 +29,7 @@ func disableAll():
 
 
 func _ready():
-    set_process_input(true)
+    # set_process_input(true)
 
     dockingPorts = ["Docking Port 1", "Docking Port 2", "Docking Port 3", "Docking Port 4", "Docking Port 5"]
     dockedShips  = []
@@ -55,10 +55,10 @@ func _ready():
     print("SSMenu._ready() is finished running")
 
 
-func _input(event):
-    if(event is InputEventMouseButton && event.button_index == BUTTON_LEFT):
-        print("Clicked!")
-        print_tree_pretty()
+# func _input(event):
+    # if(event is InputEventMouseButton && event.button_index == BUTTON_LEFT):
+    #     print("Clicked!")
+    #     print_tree_pretty()
 
 
 func updateResources():
@@ -192,11 +192,14 @@ func waiting():
     # waitingPopup.popup()
     # playerLabel.text = "It's %s's turn" % Game.currentTurnName
     # Cope.popup('Waiting for other players', "It's %s's turn" % Game.currentTurnName)
-    get_tree().current_scene.add_child(waitingPopup)
+    get_tree().get_root.get_node("SpaceStationMenu").add_child(waitingPopup, true)
+    $WaitingPopup.popup_centered()
 
 
 func notWaiting():
-    $waitingPopup.free()
+    print_tree_pretty()
+    if is_instance_valid($WaitingPopup):
+        $WaitingPopup.free()
     # waitingPopup.free()
     # waitingPopup = null
     # playerLabel  = null

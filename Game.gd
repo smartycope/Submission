@@ -62,9 +62,9 @@ func _ready():
 remote func endTurn():
     turn += 1
 
-    if get_tree().is_network_server():
-        turnIndex = turn - 1
-        turnIndex = wrapi(turnIndex, 0, players.size() - 1)
+    # if get_tree().is_network_server():
+    turnIndex = turn - 1
+    turnIndex = wrapi(turnIndex, 0, players.size() - 1)
 
     rpc("itsIDsTurn", playerTurnOrder[turnIndex])
 
