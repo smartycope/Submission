@@ -63,7 +63,7 @@ master func endTurn():
     credits = 0
     attack = 1
     defense = 2
-    Game.rpc_id(1, "endTurn")
+    # Game.rpc_id(1, "endTurn")
 
 
 func _init(_name, startingShips):

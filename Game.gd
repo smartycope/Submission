@@ -66,6 +66,8 @@ remote func endTurn():
     turnIndex = turn - 1
     turnIndex = wrapi(turnIndex, 0, players.size())
 
+    player.endTurn()
+
     rpc("itsIDsTurn", playerTurnOrder[turnIndex])
 
 

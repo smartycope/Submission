@@ -162,14 +162,10 @@ remote func post_configure_game():
     if get_tree().get_rpc_sender_id() == 1:
         get_tree().set_pause(false)
         print("pause is now set to: ", get_tree().paused)
-#        call_deferred("iMissLambdas")
+        # if is_instance_valid(get_tree().get_root().get_node('Lobby')):
+        #     get_tree().get_root().get_node('Lobby').queue_free()
 
         # Game starts now!
-
-
-func iMissLambdas():
-    if is_instance_valid(get_tree().get_root().get_node('Lobby')):
-        get_tree().get_root().get_node('Lobby').free()
 
 
 remotesync func playerReady(isReady):

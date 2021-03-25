@@ -163,7 +163,7 @@ func endTurn():
 
     Game.endTurn()
 
-    rpc_id(1, "turn_finished")
+    # rpc_id(1, "turn_finished")
 
     # dockingPorts = ["Docking Port 1", "Docking Port 2", "Docking Port 3", "Docking Port 4", "Docking Port 5"]
     # dockedShips  = []
@@ -187,6 +187,7 @@ func updateTurn():
 
 
 func waiting():
+    print('waiting called')
     # waitingPopup = load("res://WaitingPopup.tscn").instance()
     # get_node(".").add_child(waitingPopup)
     # playerLabel = waitingPopup.get_node("PlayerLabel")
@@ -199,25 +200,28 @@ func waiting():
 
 
 func notWaiting():
-    print_tree_pretty()
+    # print_tree_pretty()
     if is_instance_valid($WaitingPopup):
         $WaitingPopup.queue_free()
     print_tree_pretty()
-    shipList.grab_focus()
+
+    Cope.gotoScene("SpaceStationMenu")
+    # shipList.grab_focus()
     # waitingPopup.free()
     # waitingPopup = null
     # playerLabel  = null
 
 
-remote func turn_finished():
-    assert(get_tree().get_network_unique_id() == 1)
+# remote func turn_finished():
+#     assert(get_tree().get_network_unique_id() == 1)
 
-    rpc("takeTurn", Game.players[Game.turnIndex], false)
+#     rpc("takeTurn", Game.players[Game.turnIndex], false)
 
 
 remote func takeTurn(name, underAttack):
-    if name == Game.player.name:
-        Game.player.takeTurn(underAttack)
+    pass
+    # if name == Game.player.name:
+    #     Game.player.takeTurn(underAttack)
 
 
 #* Depricated
