@@ -192,8 +192,9 @@ func waiting():
     # waitingPopup.popup()
     # playerLabel.text = "It's %s's turn" % Game.currentTurnName
     # Cope.popup('Waiting for other players', "It's %s's turn" % Game.currentTurnName)
-    get_tree().get_root.get_node("SpaceStationMenu").add_child(waitingPopup, true)
+    get_tree().get_root().get_node("SpaceStationMenu").add_child(waitingPopup, true)
     $WaitingPopup.popup_centered()
+    $WaitingPopup/PlayerLabel.text = Game.currentTurnName
 
 
 func notWaiting():
