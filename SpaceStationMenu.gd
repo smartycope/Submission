@@ -43,10 +43,8 @@ func _ready():
     updateLabels()
 
     for i in dockingPorts.duplicate():
-        var s = newShip()
-        print('newShip: ', s)
-        dockedShips.append()
-
+        dockedShips.append(newShip(true))
+        
     for ship in dockedShips.duplicate():
         newPort(ship)
 
