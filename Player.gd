@@ -26,6 +26,7 @@ signal allCardsInUse
 
 
 func drawShip(autoShuffle=true):
+    print(drawPile)
     if drawPile.size() < 1:
         if autoShuffle:
             shuffleDiscardPile()
@@ -48,6 +49,7 @@ func shuffleDiscardPile():
     for i in discardPile:
         var s = Ship.new(i.serialize())
         s.used = false
+        print('shuffled: ', s)
         drawPile.append(s)
     # drawPile += discardPile
     discardPile = []
