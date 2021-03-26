@@ -22,8 +22,11 @@ export var emptyPortTooltip = ''
 var dockingPorts
 var dockedShips
 
+var outOfShips = false
+
 
 func disableAll():
+    outOfShips = true
     Cope.toast($Toast, "You've used all of your ships this turn!")
     for i in shipList.get_item_count():
         shipList.set_item_disabled(i, true)
@@ -35,7 +38,7 @@ func _ready():
     dockingPorts = ["Docking Port 1", "Docking Port 2", "Docking Port 3", "Docking Port 4", "Docking Port 5"]
     dockedShips  = []
 
-    Game.player.connect("reshuffle", self, "disableAll")
+    Game.player.connect("allCardsInUse", self, "disableAll")
 
     #* Update the total cards and the turn counter
     # turnNode.text = str(Game.turn)
@@ -44,7 +47,7 @@ func _ready():
 
     for i in dockingPorts.duplicate():
         dockedShips.append(newShip(false))
-        
+
     for ship in dockedShips.duplicate():
         newPort(ship)
 
@@ -102,12 +105,15 @@ func updateShipList():
 
 
 func newShip(addPorts=true):
-    var ship = Game.player.drawShip()
+    if not outOfShips:
+        var ship = Game.player.drawShip()
 
-    if addPorts:
-        newPort(ship)
+        if addPorts:
+            newPort(ship)
 
-    return ship
+        return ship
+    else:
+        return Game.nullShip
 
 
 func newPort(ship):
