@@ -3,7 +3,7 @@ extends Player
 
 enum {EASY=1, MEDIUM=2, HARD=3, MAD_GENIUS=4}
 
-func _init(level).("AI level " + str(level), []):
+func _init(level).("AI level " + str(level), [Game.nullShip, Game.nullShip, Game.nullShip, Game.nullShip, Game.nullShip, Game.nullShip, Game.nullShip, Game.nullShip, Game.nullShip, Game.nullShip, Game.nullShip]):
     pass
 
 
