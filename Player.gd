@@ -34,6 +34,8 @@ func drawShip(autoShuffle=true):
                 emit_signal("allCardsInUse")
                 print('Uh oh, we\'re out of cards!')
                 return Game.nullShip
+            else:
+                return drawPile.pop_back()
         else:
             return Game.nullShip
 
@@ -44,8 +46,9 @@ func shuffleDiscardPile():
     emit_signal("reshuffle")
     discardPile.shuffle()
     for i in discardPile:
-        drawPile.append(Ship.new(i.serialize()))
-        drawPile[-1].used = false
+        var s = Ship.new(i.serialize())
+        s.used = false
+        drawPile.append(s)
     # drawPile += discardPile
     discardPile = []
 

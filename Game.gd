@@ -1,6 +1,6 @@
 extends Node
 
-var nullShip = Ship.new("You've run out of ships", "res://nullShipIcon.png", -1, "This is the phantom null ship. Please dispose of it promptly.", -1, -1, -1, -1, -1, -1, 'This ship is here because you\'ve run out of ships', "This is a naughty ship.")
+var nullShip = Ship.new("You've run out of ships", load("res://nullShipIcon.png"), -1, "This is the phantom null ship. Please dispose of it promptly.", -1, -1, -1, -1, -1, -1, 'This ship is here because you\'ve run out of ships', "This is a naughty ship.")
 
 var Ai = load("res://AI.gd")
 
