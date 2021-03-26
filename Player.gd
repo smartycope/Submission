@@ -43,13 +43,14 @@ func drawShip(autoShuffle=true):
 
 func shuffleDiscardPile():
     emit_signal("reshuffle")
+    assert(drawPile.size() + discardPile.size() == shipDeck.size())
     discardPile.shuffle()
-    for i in discardPile:
-        var s = Ship.new(i.serialize())
-        s.used = false
-        print('shuffled: ', s)
-        drawPile.append(s)
-    # drawPile += discardPile
+    # for i in discardPile:
+        # var s = Ship.new(i.serialize())
+        # s.used = false
+        # print('shuffled: ', s)
+        # drawPile.append(s)
+    drawPile += discardPile.duplicate()
     print('discardPile: ', discardPile)
     print('drawPile: ', drawPile)
     discardPile = []
