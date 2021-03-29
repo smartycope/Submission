@@ -185,7 +185,7 @@ func endTurn():
 
 
 func updateTurn():
-    Cope.debug("called updateTurn(). $WaitingPopup is " + waitingPopup + ", Game.currentTurnName is %s, and my player's name is %s." % [Game.currentTurnName, Game.player.name])
+    Cope.debug("called updateTurn(). $WaitingPopup is " + str(waitingPopup) + ", Game.currentTurnName is %s, and my player's name is %s." % [Game.currentTurnName, Game.player.name])
     if Game.currentTurnName != Game.player.name:
         waiting()
     else:
