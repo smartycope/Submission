@@ -105,7 +105,7 @@ remotesync func pre_configure_game():
 
     if get_tree().is_network_server():
         rset("Game.useableShips", Game.useableShips)
-        rpc("Game.player.init", Game.startingShips)
+        rpc("Game.player.init", Game.startingDeck)
         Game.playerTurnOrder = Game.allPlayerData.keys()
         rset("Game.playerTurnOrder", Game.playerTurnOrder)
 
