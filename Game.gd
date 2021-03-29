@@ -70,9 +70,9 @@ func _ready():
     useableShips += basicShips
 
     for i in 7:
-        startingDeck.append(getShip("Old Gaffer"))
+        startingDeck.append(getShip("Old Gaffer", false))
     for i in 3:
-        startingDeck.append(getShip("Sheild Ship - Basic"))
+        startingDeck.append(getShip("Sheild Ship - Basic", false))
 
     var Player = load("res://Player.gd")
 

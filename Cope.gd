@@ -39,6 +39,7 @@ func popup(title, text):
     get_tree().get_root().add_child(p)
     p.popup_centered()
 
+
 class SceneLoader:
     extends Object
     # signal scene_ready(scene)
@@ -154,10 +155,13 @@ static func getJSONvalue(filename, key):
     return getJSON(filename)[key]
 
 
-
 func debug(text, prefix='', stackTrace=false, _calls=1):
     var frame = get_stack()[_calls]
     # print('--', frame, '--')
     prefix += ' = ' if len(prefix) else ''
-    var trace = '\n' + str(get_stack()) + '\n'
-    print("%-3d[%s::%s()::%d]: %s%s" % [self.debugCount, frame.source.get_file(), frame.function, frame.line, prefix, text], trace if stackTrace else '')
+    var trace = ''
+    for i in get_stack().slice(_calls, -1):
+        trace += '[%s->%s()->%d]\n' % [i.source.get_file(), i.function, i.line]
+
+    trace = '\n' + trace
+    print("%-3d[%s->%s()->%d]: %s%s" % [self.debugCount, frame.source.get_file(), frame.function, frame.line, prefix, text], trace if stackTrace else '')
