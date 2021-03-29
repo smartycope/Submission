@@ -118,7 +118,7 @@ func gotoScene(name, freeScene=true, isPath=false):
 
 
 func debugShips(shipList, prefix='', stackTrace=false):
-    if len(shipList):
+    if shipList != null and len(shipList):
         if shipList[0] is Ship:
             var text = ''
             for i in shipList:
@@ -166,6 +166,9 @@ static func getJSONvalue(filename, key):
 
 
 func debug(text, prefix='', stackTrace=false, _calls=1):
+    if text == null:
+        text = 'NULL'
+
     var frame = get_stack()[_calls]
 
     prefix += ' = ' if len(prefix) else ''
@@ -175,4 +178,4 @@ func debug(text, prefix='', stackTrace=false, _calls=1):
         trace += '[%s->%s()->%d]\n' % [i.source.get_file(), i.function, i.line]
     trace = '\n' + trace
 
-    print("%-3d[%s->%s()->%d]: %s%s" % [self.debugCount, frame.source.get_file(), frame.function, frame.line, prefix, text], trace if stackTrace else '')
+    print("%-3d[%s->%s()->%d]: %s" % [self.debugCount, frame.source.get_file(), frame.function, frame.line, prefix], text, trace if stackTrace else '')
