@@ -24,6 +24,10 @@ func _init(_name, _icon=null, _cost=null, _description=null, _energy=null, _manu
     if _name is Dictionary:
         deserialize(_name)
     else:
+        if _tooltip == null:
+            self.tooltip = self.description
+        else:
+            self.tooltip = _tooltip
         self.name = _name
         # if _icon is String:
         # self.icon = load(_icon)
@@ -36,7 +40,6 @@ func _init(_name, _icon=null, _cost=null, _description=null, _energy=null, _manu
         self.defense = _defense
         self.attack = _attack
         self.dockingPorts = _dockingPorts
-        self.tooltip = _tooltip
         self.actionDescription = _actionDescription
         self.cost = _cost
 
@@ -52,8 +55,11 @@ func deserialize(dict):
     self.defense = dict["defense"]
     self.attack = dict["attack"]
     self.dockingPorts = dict["dockingPorts"]
-    self.tooltip = dict["tooltip"]
     self.actionDescription = dict["actionDescription"]
+    if dict["tooltip"] == null:
+        self.tooltip = self.description
+    else:
+        self.tooltip = dict["tooltip"]
 
 
 func serialize():
@@ -83,16 +89,16 @@ func getDefaultTooltip():
 
 # How to make a new ship in ships.json
 #   {
-#       "name": "",
-#       "icon": "res://shipIcons/",
-#       "cost": ,
-#       "description": "",
-#       "energy": 0,
-#       "manufactories": 0,
-#       "credits": 0,
-#       "defense": 0,
-#       "attack": 0,
-#       "dockingPorts": 0,
-#       "tooltip": "",
-#       "actionDescription": ""
-#   },
+#         "name": "",
+#         "icon": "res://shipIcons/",
+#         "cost": ,
+#         "description": "",
+#         "energy": 0,
+#         "manufactories": 0,
+#         "credits": 0,
+#         "defense": 0,
+#         "attack": 0,
+#         "dockingPorts": 0,
+#         "tooltip": null,
+#         "actionDescription": ""
+#     },

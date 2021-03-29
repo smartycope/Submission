@@ -1,30 +1,71 @@
-[
-    {
-        "name": "Miner 101",
-        "icon": "res://icon.png",
-        "cost": 1,
-        "description": "A regular mining ship",
-        "energy": 0,
-        "manufactories": 0,
-        "credits": 2,
-        "defense": 0,
-        "attack": 0,
-        "dockingPorts": 0,
-        "tooltip": "",
-        "actionDescription": ""
-    },
-    {
-       "name": "Asteroid",
-       "icon": "res://asteroid3.png",
-       "cost": 2,
-       "description": "Just an asteroid.",
-       "energy": 1,
-       "manufactories": 1,
-       "credits": 1,
-       "defense": 1,
-       "attack": 1,
-       "dockingPorts": 1,
-       "tooltip": "It's an asteroid. What more do you want?",
-       "actionDescription": ""
-   }
-]
+
+{
+    "Basic":
+    [
+        {
+            "name": "Miner 101",
+            "icon": "res://icon.png",
+            "cost": 1,
+            "description": "A regular mining ship",
+            "energy": 0,
+            "manufactories": 0,
+            "credits": 2,
+            "defense": 0,
+            "attack": 0,
+            "dockingPorts": 0,
+            "tooltip": "",
+            "actionDescription": ""
+        },
+        {
+            "name": "Old Gaffer",
+            "icon": "res://shipIcons/coinIcon.png",
+            "cost": 0,
+            "description": "Some old guy who mines as a hobby. No one knows how he got out to deep space.",
+            "energy": 0,
+            "manufactories": 0,
+            "credits": 1,
+            "defense": 0,
+            "attack": 0,
+            "dockingPorts": 0,
+            "tooltip": null,
+            "actionDescription": ""
+        },
+        {
+            "name": "Sheild Ship - Basic",
+            "icon": "res://shipIcons/buster.png",
+            "cost": 2,
+            "description": "A small, basic sheild to protect you.",
+            "energy": 0,
+            "manufactories": 0,
+            "credits": 0,
+            "defense": 1,
+            "attack": 0,
+            "dockingPorts": 0,
+            "tooltip": null,
+            "actionDescription": ""
+        }
+    ],
+
+
+
+
+
+    "Regular":
+    [
+
+        {
+            "name": "Asteroid",
+            "icon": "res://asteroid3.png",
+            "cost": 2,
+            "description": "Just an asteroid.",
+            "energy": 1,
+            "manufactories": 1,
+            "credits": 1,
+            "defense": 1,
+            "attack": 1,
+            "dockingPorts": 1,
+            "tooltip": "It's an asteroid. What more do you want?",
+            "actionDescription": ""
+        }
+    ]
+}

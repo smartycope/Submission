@@ -39,23 +39,23 @@ func drawShip(autoShuffle=true):
 
 func shuffleDiscardPile():
     #* If we don't have enough cards in the discard pile, then don't bother
-    if discardPile.size() <= 1:
-        emit_signal("allCardsInUse")
-        print('Uh oh, we\'re out of cards!')
-        return false
-    else:
-        emit_signal("reshuffle")
-        # assert(drawPile.size() + discardPile.size() == shipDeck.size())
-        discardPile.shuffle()
-        # for i in discardPile:
-            # var s = Ship.new(i.serialize())
-            # s.used = false
-            # print('shuffled: ', s)
-            # drawPile.append(s)
-        drawPile += discardPile.duplicate(true)
-        print('discardPile: ', discardPile)
-        print('drawPile: ', drawPile)
-        discardPile = []
+    # if discardPile.size() <= 1:
+        # emit_signal("allCardsInUse")
+        # print('Uh oh, we\'re out of cards!')
+        # return false
+    # else:
+    emit_signal("reshuffle")
+    # assert(drawPile.size() + discardPile.size() == shipDeck.size())
+    discardPile.shuffle()
+    # for i in discardPile:
+        # var s = Ship.new(i.serialize())
+        # s.used = false
+        # print('shuffled: ', s)
+        # drawPile.append(s)
+    drawPile += discardPile.duplicate(true)
+    print('discardPile: ', discardPile)
+    print('drawPile: ', drawPile)
+    discardPile = []
     return true
 
 
@@ -89,6 +89,7 @@ func getNetworkingData():
 
 
 remote func init(availableShips):
+    print('player init called, shipdeck = ', availableShips)
     shipDeck = availableShips
     drawPile = availableShips.duplicate(true).shuffle()
     print('drawPile: ', drawPile)

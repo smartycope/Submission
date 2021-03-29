@@ -17,8 +17,11 @@ var playersDoneLoading = []
 var players = []
 var player = null # The current player
 var turnIndex = 0 # The index of the player who's turn it currently is
-const startingDeckSize = 10
+# const startingDeckSize = 10
 var currentTurnName = 'root'
+
+var startingDeck = []
+const maxShipTypes = 10
 
 const MAX_PLAYERS = 20
 
@@ -27,6 +30,7 @@ var clientCode = myIP
 var playerTurnOrder = []
 
 var ships = []
+var basicShips = []
 var useableShips = []
 
 var mode
@@ -35,22 +39,40 @@ var server = null
 
 enum {AI, SERVER, CLIENT}
 
+
+func getShip(name, regular=true):
+    for i in ships if regular else basicShips:
+        if i.name == name:
+            return i
+    return nullShip
+
+
 func _ready():
     nullShip.used = true
 
-    for i in Cope.getJSON('ships.json'):
+    #* Load all the ships
+    for i in Cope.getJSON('ships.json')["Regular"]:
         ships.append(Ship.new(i))
+    for i in Cope.getJSON('ships.json')["Basic"]:
+        basicShips.append(Ship.new(i))
 
+    #* Load (and set) all their icons
     for i in ships:
         i.icon = load(i.icon)
+    for i in basicShips:
+        i.icon = load(i.icon)
 
-    for i in startingDeckSize:
+    #* Fill the useableShips with random ships
+    for i in maxShipTypes:
         useableShips.append(Ship.new(ships[int(rand_range(0, ships.size()))].serialize()))
 
-    # for i in ships:
-        # print('-', i.icon)
+    #* Add basic money and defense and attack ships
+    useableShips += basicShips
 
-    # print('~', load("res://nullShipIcon.png"))
+    for i in 7:
+        startingDeck.append(getShip("Old Gaffer"))
+    for i in 3:
+        startingDeck.append(getShip("Sheild Ship - Basic"))
 
     var Player = load("res://Player.gd")
 
@@ -73,6 +95,7 @@ remote func endTurn():
 
         # players[turnIndex].takeTurn(false) # This parameter must change eventually
     # rpc
+
 
 remotesync func itsIDsTurn(id):
     currentTurnName = allPlayerData[id]['name']
