@@ -164,8 +164,8 @@ func endTurn():
 
 
     for i in dockedShips:
-        if i and not i.used:
-            Game.player.discardPile.append(i)
+        # if i and not i.used:
+        Game.player.discardPile.append(i)
 
     Game.endTurn()
 
@@ -209,7 +209,7 @@ func notWaiting():
     # print_tree_pretty()
     if is_instance_valid($WaitingPopup):
         $WaitingPopup.queue_free()
-    print_tree_pretty()
+    # print_tree_pretty()
 
     Cope.gotoScene("SpaceStationMenu")
     # shipList.grab_focus()
