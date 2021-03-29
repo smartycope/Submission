@@ -1,11 +1,20 @@
 extends Node
 
+
+var debugCount = -1 setget cantSet ,_incrementDebugCounter
 # var current_scene = null
 var instancedScenes = {}
 
 onready var root = get_tree().get_root()
 #* The last scene is always loaded as the current scene
 onready var current_scene = root.get_child(root.get_child_count() - 1)
+
+func _incrementDebugCounter():
+    debugCount += 1
+    return debugCount
+
+func cantSet(_val):
+    pass
 
 func _ready():
     randomize()
@@ -145,7 +154,9 @@ static func getJSONvalue(filename, key):
     return getJSON(filename)[key]
 
 
+
 static func debug(text, prefix=''):
     var frame = get_stack()[1]
-    print('--', frame, '--')
-    print(prefix, ': ' if len(prefix) else '', "%30s:%-4d %s" % [frame.source.get_file(), frame.line, text])
+    # print('--', frame, '--')
+    prefix += ': ' if len(prefix) else ''
+    print("%-3d[%s:%s:%-3d]: %s%s" % [self.debugCount, frame.source.get_file(), frame.function, frame.line, prefix, text])

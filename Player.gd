@@ -26,8 +26,8 @@ signal allCardsInUse
 
 
 func drawShip(autoShuffle=true):
-    Cope.debug(drawPile, 'drawPile    from drawShip')
-    Cope.debug(discardPile, 'discardPile from drawShip')
+    Cope.debugShips(drawPile, 'drawPile    from drawShip')
+    Cope.debugShips(discardPile, 'discardPile from drawShip')
     if drawPile.size() < 1:
         if autoShuffle:
             if not shuffleDiscardPile():
@@ -54,8 +54,8 @@ func shuffleDiscardPile():
             # Cope.debug('shuffled: ', s)
             # drawPile.append(s)
         drawPile += discardPile.duplicate(true)
-        Cope.debug(discardPile, 'discardPile')
-        Cope.debug(drawPile, 'drawPile')
+        Cope.debugShips(discardPile, 'discardPile')
+        Cope.debugShips(drawPile, 'drawPile')
         discardPile = []
         return true
 
@@ -82,7 +82,7 @@ func _init(_name, startingShips):
     shipDeck = startingShips
 
     drawPile = shipDeck.duplicate(true)
-    Cope.debug(drawPile, 'drawPile')
+    Cope.debugShips(drawPile, 'drawPile')
 
 
 func getNetworkingData():
@@ -90,7 +90,7 @@ func getNetworkingData():
 
 
 remote func init(availableShips):
-    Cope.debug(availableShips, 'player init called, shipdeck')
+    Cope.debugShips(availableShips, 'player init called, shipdeck')
     shipDeck = availableShips
     drawPile = availableShips.duplicate(true).shuffle()
-    Cope.debug(drawPile, 'drawPile')
+    Cope.debugShips(drawPile, 'drawPile')
