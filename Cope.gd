@@ -118,7 +118,7 @@ func gotoScene(name, freeScene=true, isPath=false):
 
 
 func debugShips(shipList, prefix='', stackTrace=false):
-    if not len(shipList):
+    if len(shipList):
         if shipList[0] is Ship:
             var text = ''
             for i in shipList:
