@@ -82,7 +82,7 @@ func _init(_name, startingShips):
     shipDeck = startingShips
 
     drawPile = shipDeck.duplicate(true)
-    Cope.debugShips(drawPile, 'drawPile')
+    Cope.debugShips(drawPile, 'drawPile', true)
 
 
 func getNetworkingData():

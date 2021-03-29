@@ -116,11 +116,11 @@ func gotoScene(name, freeScene=true, isPath=false):
     return SceneLoader.new(funcref(self, "get_tree"), current_scene, name, isPath, freeScene)
 
 
-func debugShips(shipList, prefix=''):
+func debugShips(shipList, prefix='', stackTrace=false):
     var text = ''
     for i in shipList:
         text += i.name + ', '
-    debug('[' + text + ']', prefix)
+    debug('[' + text + ']', prefix, stackTrace, 2)
 
 
 static func getJSON(filename):
@@ -155,8 +155,9 @@ static func getJSONvalue(filename, key):
 
 
 
-func debug(text, prefix=''):
-    var frame = get_stack()[1]
+func debug(text, prefix='', stackTrace=false, _calls=1):
+    var frame = get_stack()[_calls]
     # print('--', frame, '--')
-    prefix += ': ' if len(prefix) else ''
-    print("%-3d[%s:%s:%-3d]: %s%s" % [self.debugCount, frame.source.get_file(), frame.function, frame.line, prefix, text])
+    prefix += ' = ' if len(prefix) else ''
+    var trace = '\n' + str(get_stack()) + '\n'
+    print("%-3d[%s::%s()::%d]: %s%s" % [self.debugCount, frame.source.get_file(), frame.function, frame.line, prefix, text], trace if stackTrace else '')

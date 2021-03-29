@@ -71,6 +71,10 @@ config/icon="res://icon.png"
 Cope="*res://Cope.gd"
 Game="*res://Game.gd"
 
+[network]
+
+limits/debugger_stdout/max_chars_per_second=214748364
+
 [rendering]
 
 environment/default_environment="res://default_env.tres"
