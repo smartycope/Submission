@@ -118,16 +118,19 @@ func gotoScene(name, freeScene=true, isPath=false):
 
 
 func debugShips(shipList, prefix='', stackTrace=false):
-    if shipList[0] is Ship:
-        var text = ''
-        for i in shipList:
-            text += i.name + ', '
-            debug('[' + text + ']', prefix, stackTrace, 2)
-    elif shipList[0] is EncodedObjectAsID:
-        var text = ''
-        for i in shipList:
-            text += instance_from_id(i).name + ', '
-            debug('[' + text + ']', prefix, stackTrace, 2)
+    if not len(shipList):
+        if shipList[0] is Ship:
+            var text = ''
+            for i in shipList:
+                text += i.name + ', '
+                debug('[' + text + ']', prefix, stackTrace, 2)
+        elif shipList[0] is EncodedObjectAsID:
+            var text = ''
+            for i in shipList:
+                text += instance_from_id(i).name + ', '
+                debug('[' + text + ']', prefix, stackTrace, 2)
+        else:
+            debug(shipList, prefix, stackTrace, 2)    
     else:
         debug(shipList, prefix, stackTrace, 2)
 
