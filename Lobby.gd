@@ -74,7 +74,7 @@ remote func register_player(data):
     # Store the info
     Game.allPlayerData[id] = data
     # $Code.text = code
-    print("player registered", data, "\nMy ID: ", get_tree().get_network_unique_id(), "\nHis ID: ", get_tree().get_rpc_sender_id())
+    # Cope.debug("player registered", data, "\nMy ID: ", get_tree().get_network_unique_id(), "\nHis ID: ", get_tree().get_rpc_sender_id())
 
     updatePlayerList()
 
@@ -100,7 +100,7 @@ remote func _setPlayerOrder(players):
 
 
 remotesync func pre_configure_game():
-    print('starting preconfiguring')
+    Cope.debug('starting preconfiguring')
     assert(get_tree().get_rpc_sender_id() == 1)
     get_tree().set_pause(true) # Pre-pause
     # The rest is the same as in the code in the previous section (look above)
@@ -127,7 +127,7 @@ remotesync func pre_configure_game():
 
     Game.currentTurnName = Game.allPlayerData[1]['name']
 
-    print("almost done preconfiguring and data is: ", Game.allPlayerData)
+    Cope.debug(Game.allPlayerData, "almost done preconfiguring and data is")
 
     world.updateTurn()
 
@@ -154,7 +154,7 @@ remotesync func pre_configure_game():
 
 remote func done_preconfiguring():
     var who = get_tree().get_rpc_sender_id()
-    print(who, " is done_preconfiguring!")
+    # Cope.debug(who, " is done_preconfiguring!")
     # Here are some checks you can do, for example
     assert(get_tree().is_network_server())
     assert(who in Game.allPlayerData) # Exists
@@ -167,11 +167,11 @@ remote func done_preconfiguring():
 
 
 remote func post_configure_game():
-    print('post configuring')
+    Cope.debug('post configuring')
     # Only the server is allowed to tell a client to unpause
     if get_tree().get_rpc_sender_id() == 1:
         get_tree().set_pause(false)
-        print("pause is now set to: ", get_tree().paused)
+        # Cope.debug("pause is now set to: ", get_tree().paused)
         # if is_instance_valid(get_tree().get_root().get_node('Lobby')):
         #     get_tree().get_root().get_node('Lobby').queue_free()
 
@@ -179,7 +179,7 @@ remote func post_configure_game():
 
 
 remotesync func playerReady(isReady):
-    print("data: ", Game.allPlayerData)
+    # Cope.debug("data: ", Game.allPlayerData)
     Game.allPlayerData[get_tree().get_rpc_sender_id()]['ready'] = isReady
 
     updateStatus()

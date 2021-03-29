@@ -26,8 +26,8 @@ signal allCardsInUse
 
 
 func drawShip(autoShuffle=true):
-    print('drawPile    from drawShip: ', drawPile)
-    print('discardPile from drawShip: ', discardPile)
+    Cope.debug(drawPile, 'drawPile    from drawShip')
+    Cope.debug(discardPile, 'discardPile from drawShip')
     if drawPile.size() < 1:
         if autoShuffle:
             if not shuffleDiscardPile():
@@ -42,7 +42,7 @@ func shuffleDiscardPile():
     #* If we don't have enough cards in the discard pile, then don't bother
     if discardPile.size() <= 1:
         emit_signal("allCardsInUse")
-        print('Uh oh, we\'re out of cards!')
+        Cope.debug('Uh oh, we\'re out of cards!')
         return false
     else:
         emit_signal("reshuffle")
@@ -51,11 +51,11 @@ func shuffleDiscardPile():
         for i in discardPile:
             # var s = Ship.new(i.serialize())
             i.used = false
-            # print('shuffled: ', s)
+            # Cope.debug('shuffled: ', s)
             # drawPile.append(s)
         drawPile += discardPile.duplicate(true)
-        print('discardPile: ', discardPile)
-        print('drawPile: ', drawPile)
+        Cope.debug(discardPile, 'discardPile')
+        Cope.debug(drawPile, 'drawPile')
         discardPile = []
         return true
 
@@ -82,7 +82,7 @@ func _init(_name, startingShips):
     shipDeck = startingShips
 
     drawPile = shipDeck.duplicate(true)
-    print('drawPile: ', drawPile)
+    Cope.debug(drawPile, 'drawPile')
 
 
 func getNetworkingData():
@@ -90,7 +90,7 @@ func getNetworkingData():
 
 
 remote func init(availableShips):
-    print('player init called, shipdeck = ', availableShips)
+    Cope.debug(availableShips, 'player init called, shipdeck')
     shipDeck = availableShips
     drawPile = availableShips.duplicate(true).shuffle()
-    print('drawPile: ', drawPile)
+    Cope.debug(drawPile, 'drawPile')

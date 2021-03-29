@@ -56,12 +56,12 @@ func _ready():
 
     # print("SSMenu._ready() is almost finished running")
     # updateTurn()
-    print("SSMenu._ready() is finished running")
+    Cope.debug("SSMenu._ready() is finished running")
 
 
 # func _input(event):
     # if(event is InputEventMouseButton && event.button_index == BUTTON_LEFT):
-    #     print("Clicked!")
+    #     Cope.debug("Clicked!")
     #     print_tree_pretty()
 
 
@@ -123,13 +123,13 @@ func newPort(ship):
 
 
 func shipUsed(index):
-    # print("The ship at index %d was just used" % index)
+    # Cope.debug("The ship at index %d was just used" % index)
     if dockedShips[index] != null and Game.player.energy > 0 and not dockedShips[index].used:
         var ship = dockedShips[index]
 
         Game.player.discardPile.append(ship)
 
-        print("setting %s to be used!" % ship.name)
+        Cope.debug("setting %s to be used!" % ship.name)
         ship.used = true
         Game.player.energy += ship.energy - 1
         Game.player.manufactories += ship.manufactories
@@ -185,7 +185,7 @@ func endTurn():
 
 
 func updateTurn():
-    print("called updateTurn(). $WaitingPopup is ", waitingPopup, ", Game.currentTurnName is %s, and my player's name is %s." % [Game.currentTurnName, Game.player.name])
+    Cope.debug("called updateTurn(). $WaitingPopup is " + waitingPopup + ", Game.currentTurnName is %s, and my player's name is %s." % [Game.currentTurnName, Game.player.name])
     if Game.currentTurnName != Game.player.name:
         waiting()
     else:
@@ -193,7 +193,7 @@ func updateTurn():
 
 
 func waiting():
-    print('waiting called')
+    Cope.debug('waiting called')
     # waitingPopup = load("res://WaitingPopup.tscn").instance()
     # get_node(".").add_child(waitingPopup)
     # playerLabel = waitingPopup.get_node("PlayerLabel")

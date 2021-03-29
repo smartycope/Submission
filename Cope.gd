@@ -107,6 +107,11 @@ func gotoScene(name, freeScene=true, isPath=false):
     return SceneLoader.new(funcref(self, "get_tree"), current_scene, name, isPath, freeScene)
 
 
+static func debugShips(shipList, prefix=''):
+    var text = ''
+    for i in shipList:
+        text += i.name + ', '
+    debug('[' + text + ']', prefix)
 
 
 static func getJSON(filename):
@@ -138,3 +143,9 @@ static func setJSONvalue(filename, key, value):
 
 static func getJSONvalue(filename, key):
     return getJSON(filename)[key]
+
+
+static func debug(text, prefix=''):
+    var frame = get_stack()[1]
+    print('--', frame, '--')
+    print(prefix, ': ' if len(prefix) else '', "%30s:%-4d %s" % [frame.source.get_file(), frame.line, text])
