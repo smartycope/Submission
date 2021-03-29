@@ -72,10 +72,9 @@ remote func endTurn():
 
 
         # players[turnIndex].takeTurn(false) # This parameter must change eventually
-        # rpc
+    # rpc
 
-
-remote func itsIDsTurn(id):
+remotesync func itsIDsTurn(id):
     currentTurnName = allPlayerData[id]['name']
     if get_tree().current_scene.name == "SpaceStationMenu":
         get_tree().current_scene.updateTurn()
