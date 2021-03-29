@@ -123,14 +123,14 @@ func debugShips(shipList, prefix='', stackTrace=false):
             var text = ''
             for i in shipList:
                 text += i.name + ', '
-                debug('[' + text + ']', prefix, stackTrace, 2)
+            debug('[' + text + ']', prefix, stackTrace, 2)
         elif shipList[0] is EncodedObjectAsID:
             var text = ''
             for i in shipList:
-                text += instance_from_id(i).name + ', '
-                debug('[' + text + ']', prefix, stackTrace, 2)
+                text += instance_from_id(i.object_id).name + ', '
+            debug('[' + text + ']', prefix, stackTrace, 2)
         else:
-            debug(shipList, prefix, stackTrace, 2)    
+            debug(shipList, prefix, stackTrace, 2)
     else:
         debug(shipList, prefix, stackTrace, 2)
 
