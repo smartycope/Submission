@@ -89,7 +89,6 @@ func startGame():
     rpc("pre_configure_game")
 
 
-
 remote func _setUseableShips(ships):
     Game.useableShips = ships
 
@@ -98,8 +97,6 @@ remote func _setStartingDeck(ships):
 
 remote func _setPlayerOrder(players):
     Game.playerTurnOrder = players
-
-
 
 
 remotesync func pre_configure_game():

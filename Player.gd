@@ -26,7 +26,8 @@ signal allCardsInUse
 
 
 func drawShip(autoShuffle=true):
-    print('drawPile from drawShip: ', drawPile)
+    print('drawPile    from drawShip: ', drawPile)
+    print('discardPile from drawShip: ', discardPile)
     if drawPile.size() < 1:
         if autoShuffle:
             if not shuffleDiscardPile():
