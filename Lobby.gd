@@ -89,6 +89,19 @@ func startGame():
     rpc("pre_configure_game")
 
 
+
+remote func _setUseableShips(ships):
+    Game.useableShips = ships
+
+remote func _setStartingDeck(ships):
+    Game.player.init(ships)
+
+remote func _setPlayerOrder(players):
+    Game.playerTurnOrder = players
+
+
+
+
 remotesync func pre_configure_game():
     print('starting preconfiguring')
     assert(get_tree().get_rpc_sender_id() == 1)
@@ -104,10 +117,10 @@ remotesync func pre_configure_game():
     # var world = yield(Cope.gotoScene("SpaceStationMenu", true), "scene_ready")
 
     if get_tree().is_network_server():
-        rset("Game.useableShips", Game.useableShips)
-        rpc("Game.player.init", Game.startingDeck)
+        rpc("_setUseableShips", Game.useableShips)
+        rpc("_setStartingDeck", Game.startingDeck)
         Game.playerTurnOrder = Game.allPlayerData.keys()
-        rset("Game.playerTurnOrder", Game.playerTurnOrder)
+        rpc("_setPlayerOrder", Game.playerTurnOrder)
 
     # Cope.gotoScene("SpaceStationMenu")
 

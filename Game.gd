@@ -76,7 +76,7 @@ func _ready():
 
     var Player = load("res://Player.gd")
 
-    players.append(Player.new(Cope.getJSONvalue("settings.json", "name"), useableShips))
+    players.append(Player.new(Cope.getJSONvalue("settings.json", "name"), startingDeck))
     player = players[0]
     players.append(Ai.new(Ai.EASY))
 
