@@ -26,8 +26,8 @@ signal allCardsInUse
 
 
 func drawShip(autoShuffle=true):
-    Cope.debugShips(drawPile, 'drawPile    from drawShip')
-    Cope.debugShips(discardPile, 'discardPile from drawShip')
+    Cope.debugShips(drawPile, 'drawPile')
+    Cope.debugShips(discardPile, 'discardPile', true)
     if drawPile.size() < 1:
         if autoShuffle:
             if not shuffleDiscardPile():

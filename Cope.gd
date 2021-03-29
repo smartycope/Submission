@@ -118,11 +118,18 @@ func gotoScene(name, freeScene=true, isPath=false):
 
 
 func debugShips(shipList, prefix='', stackTrace=false):
-    var text = ''
-    for i in shipList:
-        text += i.name + ', '
-    debug('[' + text + ']', prefix, stackTrace, 2)
-
+    if shipList[0] is Ship:
+        var text = ''
+        for i in shipList:
+            text += i.name + ', '
+            debug('[' + text + ']', prefix, stackTrace, 2)
+    elif shipList[0] is EncodedObjectAsID:
+        var text = ''
+        for i in shipList:
+            text += instance_from_id(i).name + ', '
+            debug('[' + text + ']', prefix, stackTrace, 2)
+    else:
+        debug(shipList, prefix, stackTrace, 2)
 
 static func getJSON(filename):
     var file = File.new()
@@ -157,11 +164,12 @@ static func getJSONvalue(filename, key):
 
 func debug(text, prefix='', stackTrace=false, _calls=1):
     var frame = get_stack()[_calls]
-    # print('--', frame, '--')
+
     prefix += ' = ' if len(prefix) else ''
+
     var trace = ''
     for i in get_stack().slice(_calls, -1):
         trace += '[%s->%s()->%d]\n' % [i.source.get_file(), i.function, i.line]
-
     trace = '\n' + trace
+
     print("%-3d[%s->%s()->%d]: %s%s" % [self.debugCount, frame.source.get_file(), frame.function, frame.line, prefix, text], trace if stackTrace else '')
