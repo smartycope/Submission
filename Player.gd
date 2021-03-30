@@ -64,7 +64,7 @@ puppet func takeTurn(underAttack):
     if underAttack:
         yield(Cope.gotoScene("CommandFeuge"), "scene_ready").setAsAttack(true)
     else:
-        Cope.gotoScene("SpaceStationMenu")
+        yield(Cope.gotoScene("SpaceStationMenu"), "scene_ready").updateTurn()
 
 
 master func endTurn():

@@ -119,6 +119,7 @@ remotesync func pre_configure_game():
         var world = load("res://SpaceStationMenu.tscn").instance()
         get_node("/root").add_child(world)
         get_tree().set_current_scene(world)
+        world.updateTurn()
     # Cope.gotoScene("SpaceStationMenu")
 
     # Load my player
@@ -127,9 +128,8 @@ remotesync func pre_configure_game():
 
     Game.currentTurnName = Game.allPlayerData[1]['name']
 
-    Cope.debug(Game.allPlayerData, "almost done preconfiguring and data is")
+    Cope.debug(Game.allPlayerData, "almost done preconfiguring and data")
 
-    world.updateTurn()
 
     # var my_player = preload("res://player.tscn").instance()
     # my_player.set_name(str(selfPeerID))
