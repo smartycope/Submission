@@ -106,11 +106,6 @@ remotesync func pre_configure_game():
     # The rest is the same as in the code in the previous section (look above)
     # var selfPeerID = get_tree().get_network_unique_id()
 
-    # Load world
-    var world = load("res://SpaceStationMenu.tscn").instance()
-    get_node("/root").add_child(world)
-    get_tree().set_current_scene(world)
-
     # var world = yield(Cope.gotoScene("SpaceStationMenu", true), "scene_ready")
 
     if get_tree().is_network_server():
@@ -118,7 +113,12 @@ remotesync func pre_configure_game():
         rpc("_setStartingDeck", Game.startingDeck)
         Game.playerTurnOrder = Game.allPlayerData.keys()
         rpc("_setPlayerOrder", Game.playerTurnOrder)
-
+    else:
+        #* Load world, IF I'm not the server, because the server always plays first, and
+        #   startTurn() already makes you go to SpaceStationMenu.
+        var world = load("res://SpaceStationMenu.tscn").instance()
+        get_node("/root").add_child(world)
+        get_tree().set_current_scene(world)
     # Cope.gotoScene("SpaceStationMenu")
 
     # Load my player

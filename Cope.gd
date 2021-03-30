@@ -178,4 +178,8 @@ func debug(text, prefix='', stackTrace=false, _calls=1):
         trace += '[%s->%s()->%d]\n' % [i.source.get_file(), i.function, i.line]
     trace = '\n' + trace
 
-    print("%-3d[%s->%s()->%d]: %s" % [self.debugCount, frame.source.get_file(), frame.function, frame.line, prefix], text, trace if stackTrace else '')
+    var hasLen = (text is Array) or (text is Dictionary)
+
+    print("%-3d[%s->%s()->%d]: %s" % [self.debugCount, frame.source.get_file(), frame.function, frame.line, prefix], text,
+          '(len=%d)' % len(text) if hasLen else '',
+          trace if stackTrace else '\n')
